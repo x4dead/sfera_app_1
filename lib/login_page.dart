@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             Image.asset('lib/assets/images/logo.png', scale: 1.8),
             SizedBox(height: 10),
             Text(
-              'Hello!',
+              'HELLO AGAIN!',
               style: GoogleFonts.bebasNeue(
                 fontSize: 52,
               ),
