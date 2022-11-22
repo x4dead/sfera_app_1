@@ -17,6 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 bool _isActive = true;
+bool _soundActive = true;
 
 class _LoginPageState extends State<LoginPage> {
   @override
@@ -33,8 +34,19 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                     splashRadius: 25,
-                    onPressed: () {},
-                    icon: const Icon(Icons.volume_up_outlined),
+                    onPressed: () {
+                      if (_soundActive == true) {
+                        _soundActive == false;
+                      } else {
+                        _soundActive == true;
+                      }
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      _soundActive == true
+                          ? Icons.volume_up_outlined
+                          : Icons.volume_off_outlined,
+                    ),
                   ),
                   IconButton(
                     splashRadius: 25,
