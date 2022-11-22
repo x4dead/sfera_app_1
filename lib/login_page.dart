@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 10),
               // sign is button
-              AppButton(onPressed: () {}, text: 'Sign In', child: Text('123')),
+              AppButton(onPressed: () {}, child: Text('123')),
               const SizedBox(height: 20),
               // not a member? register now
               Row(

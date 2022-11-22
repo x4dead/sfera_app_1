@@ -6,7 +6,6 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.primary,
     required this.child,
-    required String text,
   }) : super(key: key);
 
   final Function() onPressed;
