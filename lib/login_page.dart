@@ -2,7 +2,6 @@
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/widgets/app_button/app_button.dart';
 import 'package:sfera_app_1/widgets/app_text_style/app_text_style.dart';
