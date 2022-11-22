@@ -3,12 +3,14 @@
 class AppButton extends StatelessWidget {
   const AppButton({
     Key? key,
-    required this.text,
     required this.onPressed,
+    this.primary,
+    required this.child,
   }) : super(key: key);
-  final String text;
-  final Function() onPressed;
 
+  final Function() onPressed;
+  final Color? primary;
+  final Widget child;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,19 +19,12 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          primary: Colors.deepPurple,
+          primary: primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
+        child: child,
       ),
     );
   }

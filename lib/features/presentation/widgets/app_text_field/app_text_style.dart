@@ -1,6 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 
-import '../../themes/colors/colors.dart';
+import '../../../../themes/colors/colors.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -28,7 +28,7 @@ class AppTextField extends StatelessWidget {
         hintText: '$text:',
         filled: true,
         fillColor: AppColors.colorFFFFFF,
-        suffix: suffix,
+        suffixIcon: suffix,
         prefixIcon: Icon(
           icon,
           color: AppColors.color000000,
