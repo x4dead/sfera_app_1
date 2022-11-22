@@ -99,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
               AppButton(
                 onPressed: () {},
                 primary: AppColors.color22212f,
+                text: '',
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
