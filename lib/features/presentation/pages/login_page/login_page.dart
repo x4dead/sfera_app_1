@@ -21,6 +21,8 @@ class LoginPage extends StatefulWidget {
 }
 
 bool _isActive = true;
+bool _isSound = true;
+bool _isDark = true;
 
 final _bloc = sl<SferaBloc>();
 
@@ -44,18 +46,42 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                     splashRadius: 25,
-                    onPressed: () {},
-                    icon: const Icon(Icons.volume_up_outlined),
+                    onPressed: () {
+                      setState(() {
+                        if (_isSound == false) {
+                          _isSound = true;
+                        } else {
+                          _isSound = false;
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      _isSound == true
+                          ? Icons.volume_up_outlined
+                          : Icons.volume_off_outlined,
+                    ),
                   ),
                   IconButton(
                     splashRadius: 25,
                     onPressed: () {},
-                    icon: const Icon(Icons.volume_up_outlined),
+                    icon: const Icon(Icons.language),
                   ),
                   IconButton(
                     splashRadius: 25,
-                    onPressed: () {},
-                    icon: const Icon(Icons.volume_up_outlined),
+                    onPressed: () {
+                      setState(() {
+                        if (_isDark == false) {
+                          _isDark = true;
+                        } else {
+                          _isDark = false;
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      _isDark == true
+                          ? Icons.light_mode
+                          : Icons.dark_mode_outlined,
+                    ),
                   ),
                 ],
               ),
