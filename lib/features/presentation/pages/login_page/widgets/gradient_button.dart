@@ -13,7 +13,7 @@ class GradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      radius: 0,
+      radius: 25,
       splashColor: AppColors.colorTransparent,
       overlayColor: MaterialStateProperty.all(AppColors.colorTransparent),
       onTap: onTap,

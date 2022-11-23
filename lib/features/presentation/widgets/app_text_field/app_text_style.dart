@@ -10,18 +10,20 @@ class AppTextField extends StatelessWidget {
     this.suffix,
     this.obscureText,
     this.icon,
+    required this.controller,
   }) : super(key: key);
   final String text;
   final int? maxLength;
   final Widget? suffix;
   final bool? obscureText;
   final IconData? icon;
-
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText ?? false,
       maxLength: maxLength,
+      controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
         counterText: '',
