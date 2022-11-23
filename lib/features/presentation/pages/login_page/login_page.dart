@@ -79,8 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     icon: Icon(
                       _isDark == true
-                          ? Icons.light_mode
-                          : Icons.dark_mode_outlined,
+                          ? Icons.light_mode_outlined
+                          : Icons.dark_mode,
                     ),
                   ),
                 ],

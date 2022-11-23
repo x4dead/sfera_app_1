@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>13755402140-b8q46havifu321cu1sscccqgpns1m52v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.13755402140-b8q46havifu321cu1sscccqgpns1m52v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBmXa4f25KQh693DQbrB30YZZp3NsAA7hM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>13755402140</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sferaApp1</string>
+	<key>PROJECT_ID</key>
+	<string>sfera-58b55</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sfera-58b55.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:13755402140:ios:beac759805b6de31552a59</string>
+</dict>
+</plist>
