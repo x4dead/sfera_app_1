@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                     icon: const Icon(Icons.volume_up_outlined),
                   ),
                   IconButton(
-                    splashRadius: 25,
+                    splashRadius: 26,
                     onPressed: () {},
                     icon: const Icon(Icons.volume_up_outlined),
                   ),
