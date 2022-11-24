@@ -37,7 +37,7 @@ class DefaultFirebaseOptions {
         return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
+          'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
@@ -53,12 +53,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBmXa4f25KQh693DQbrB30YZZp3NsAA7hM',
-    appId: '1:13755402140:ios:beac759805b6de31552a59',
-    messagingSenderId: '13755402140',
-    projectId: 'sfera-58b55',
-    storageBucket: 'sfera-58b55.appspot.com',
-    iosClientId: '13755402140-b8q46havifu321cu1sscccqgpns1m52v.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD6ThyO9OEafFORzyd5lRvlEL5xPu3kGDg',
+    appId: '1:1027984147993:ios:6d3d1c13724ad9cbdc0c88',
+    messagingSenderId: '1027984147993',
+    projectId: 'sfera2-ee936',
+    storageBucket: 'sfera2-ee936.appspot.com',
+    iosClientId:
+        '1027984147993-3k9a1rb53f7oi3csr8hsseovir258ild.apps.googleusercontent.com',
     iosBundleId: 'com.example.sferaApp1',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCJl_GXfFy-BIeHmWKwM-7XAGk-3TCkY8g',
+    appId: '1:1027984147993:web:71e49f803414cd8bdc0c88',
+    messagingSenderId: '1027984147993',
+    projectId: 'sfera2-ee936',
+    authDomain: 'sfera2-ee936.firebaseapp.com',
+    storageBucket: 'sfera2-ee936.appspot.com',
+  );
+
+  static const FirebaseOptions linux = FirebaseOptions(
+    apiKey: 'AIzaSyCJl_GXfFy-BIeHmWKwM-7XAGk-3TCkY8g',
+    appId: '1:1027984147993:web:b969f9824e884bb0dc0c88',
+    messagingSenderId: '1027984147993',
+    projectId: 'sfera2-ee936',
+    authDomain: 'sfera2-ee936.firebaseapp.com',
+    storageBucket: 'sfera2-ee936.appspot.com',
   );
 }
