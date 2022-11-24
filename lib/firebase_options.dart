@@ -36,15 +36,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return linux;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -53,12 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBmXa4f25KQh693DQbrB30YZZp3NsAA7hM',
-    appId: '1:13755402140:ios:beac759805b6de31552a59',
-    messagingSenderId: '13755402140',
-    projectId: 'sfera-58b55',
-    storageBucket: 'sfera-58b55.appspot.com',
-    iosClientId: '13755402140-b8q46havifu321cu1sscccqgpns1m52v.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBn6HuGDw9rILpnQdlGrZrrU_7GUrGUMcM',
+    appId: '1:736200371694:ios:fc7cefde73e6148a9872ff',
+    messagingSenderId: '736200371694',
+    projectId: 'sferanew-89513',
+    storageBucket: 'sferanew-89513.appspot.com',
+    iosClientId: '736200371694-rl1uejtol9fj1ci9musln1v4llr2qogj.apps.googleusercontent.com',
     iosBundleId: 'com.example.sferaApp1',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBY-fb4_MuzVvU_ACngKeL62sb2STz49YY',
+    appId: '1:736200371694:web:82d3b7a6cc49c4f49872ff',
+    messagingSenderId: '736200371694',
+    projectId: 'sferanew-89513',
+    authDomain: 'sferanew-89513.firebaseapp.com',
+    storageBucket: 'sferanew-89513.appspot.com',
+  );
+
+  static const FirebaseOptions linux = FirebaseOptions(
+    apiKey: 'AIzaSyBY-fb4_MuzVvU_ACngKeL62sb2STz49YY',
+    appId: '1:736200371694:web:40c38156f5aee8d79872ff',
+    messagingSenderId: '736200371694',
+    projectId: 'sferanew-89513',
+    authDomain: 'sferanew-89513.firebaseapp.com',
+    storageBucket: 'sferanew-89513.appspot.com',
   );
 }
