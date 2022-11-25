@@ -19,7 +19,7 @@ mixin _$SferaStates {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) =>
@@ -27,7 +27,7 @@ mixin _$SferaStates {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) =>
@@ -35,7 +35,7 @@ mixin _$SferaStates {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
@@ -124,7 +124,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
@@ -135,7 +135,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
@@ -146,7 +146,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
@@ -203,6 +203,8 @@ abstract class _Loading implements SferaStates {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -211,60 +213,84 @@ class __$$_ErrorCopyWithImpl<$Res>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_Error(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error();
+  const _$_Error({required this.message});
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'SferaStates.error()';
+    return 'SferaStates.error(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
-    return error();
+    return error(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
-    return error?.call();
+    return error?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(message);
     }
     return orElse();
   }
@@ -308,7 +334,12 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements SferaStates {
-  const factory _Error() = _$_Error;
+  const factory _Error({required final String message}) = _$_Error;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -349,7 +380,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
@@ -360,7 +391,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
@@ -371,7 +402,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
@@ -462,7 +493,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
@@ -473,7 +504,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
@@ -484,7 +515,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
@@ -541,21 +572,25 @@ abstract class _Initial implements SferaStates {
 mixin _$SferaEvents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) loginByEmail,
+    required TResult Function(
+            String email, String password, bool Function()? formKey)
+        loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? loginByEmail,
+    TResult? Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? loginByEmail,
+    TResult Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
@@ -609,7 +644,7 @@ abstract class _$$_LoginByEmailCopyWith<$Res> {
           _$_LoginByEmail value, $Res Function(_$_LoginByEmail) then) =
       __$$_LoginByEmailCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String email, String password, bool Function()? formKey});
 }
 
 /// @nodoc
@@ -625,6 +660,7 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? formKey = freezed,
   }) {
     return _then(_$_LoginByEmail(
       email: null == email
@@ -635,6 +671,10 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      formKey: freezed == formKey
+          ? _value.formKey
+          : formKey // ignore: cast_nullable_to_non_nullable
+              as bool Function()?,
     ));
   }
 }
@@ -642,16 +682,19 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoginByEmail implements _LoginByEmail {
-  const _$_LoginByEmail({required this.email, required this.password});
+  const _$_LoginByEmail(
+      {required this.email, required this.password, required this.formKey});
 
   @override
   final String email;
   @override
   final String password;
+  @override
+  final bool Function()? formKey;
 
   @override
   String toString() {
-    return 'SferaEvents.loginByEmail(email: $email, password: $password)';
+    return 'SferaEvents.loginByEmail(email: $email, password: $password, formKey: $formKey)';
   }
 
   @override
@@ -661,11 +704,12 @@ class _$_LoginByEmail implements _LoginByEmail {
             other is _$_LoginByEmail &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.formKey, formKey) || other.formKey == formKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, email, password, formKey);
 
   @JsonKey(ignore: true)
   @override
@@ -676,33 +720,37 @@ class _$_LoginByEmail implements _LoginByEmail {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) loginByEmail,
+    required TResult Function(
+            String email, String password, bool Function()? formKey)
+        loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
   }) {
-    return loginByEmail(email, password);
+    return loginByEmail(email, password, formKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? loginByEmail,
+    TResult? Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
   }) {
-    return loginByEmail?.call(email, password);
+    return loginByEmail?.call(email, password, formKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? loginByEmail,
+    TResult Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
-      return loginByEmail(email, password);
+      return loginByEmail(email, password, formKey);
     }
     return orElse();
   }
@@ -745,10 +793,12 @@ class _$_LoginByEmail implements _LoginByEmail {
 abstract class _LoginByEmail implements SferaEvents {
   const factory _LoginByEmail(
       {required final String email,
-      required final String password}) = _$_LoginByEmail;
+      required final String password,
+      required final bool Function()? formKey}) = _$_LoginByEmail;
 
   String get email;
   String get password;
+  bool Function()? get formKey;
   @JsonKey(ignore: true)
   _$$_LoginByEmailCopyWith<_$_LoginByEmail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -792,7 +842,9 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) loginByEmail,
+    required TResult Function(
+            String email, String password, bool Function()? formKey)
+        loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
   }) {
@@ -802,7 +854,8 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? loginByEmail,
+    TResult? Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
   }) {
@@ -812,7 +865,8 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? loginByEmail,
+    TResult Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
@@ -900,7 +954,9 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password) loginByEmail,
+    required TResult Function(
+            String email, String password, bool Function()? formKey)
+        loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
   }) {
@@ -910,7 +966,8 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password)? loginByEmail,
+    TResult? Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
   }) {
@@ -920,7 +977,8 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password)? loginByEmail,
+    TResult Function(String email, String password, bool Function()? formKey)?
+        loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
