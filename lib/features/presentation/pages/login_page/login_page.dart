@@ -90,8 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                     width: 390,
                     child: Column(
                       children: [
-                        Image.network('https://sfera.zone/img/footer-logo.png',
-                            scale: 1.8),
+                        // Image.network('https://sfera.zone/img/footer-logo.png',
+                        //     scale: 1.8),
                         const SizedBox(height: 10),
                         Text(
                           'Hello again!'.toUpperCase(),
