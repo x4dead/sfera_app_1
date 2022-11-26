@@ -1,5 +1,4 @@
 ﻿import 'package:flutter/material.dart';
-
 import '../../../../themes/colors/colors.dart';
 
 class AppTextField extends StatelessWidget {
@@ -11,6 +10,7 @@ class AppTextField extends StatelessWidget {
     this.obscureText,
     this.icon,
     required this.controller,
+    required this.keyboardTypes,
   }) : super(key: key);
   final String text;
   final int? maxLength;
@@ -18,9 +18,13 @@ class AppTextField extends StatelessWidget {
   final bool? obscureText;
   final IconData? icon;
   final TextEditingController controller;
+
+  final TextInputType keyboardTypes;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardTypes,
       obscureText: obscureText ?? false,
       maxLength: maxLength,
       controller: controller,
@@ -40,6 +44,20 @@ class AppTextField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
       ),
+      validator: (v) {
+        if (keyboardTypes == TextInputType.emailAddress) {
+          if (!v!.contains('@') && !v.contains('.')) {
+            return 'Incorrect email address';
+          } else if (v.length < 12) {
+            return 'Email must contain at least 12 characters';
+          }
+        } else if (keyboardTypes == TextInputType.text) {
+          if (v!.length < 7 && !v.contains(RegExp(r'[A-Z]'))) {
+            return ('Password must be at least 7 characters\n and contain one capital letter');
+          }
+        }
+        return null;
+      },
     );
   }
 }

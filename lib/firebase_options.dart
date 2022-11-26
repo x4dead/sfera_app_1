@@ -47,32 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAlm4wDYgzwhHYIElEtBnEjdTZZec8BZ40',
-    appId: '1:345923041474:ios:b6d88150661159961f635b',
-    messagingSenderId: '345923041474',
-    projectId: 'first-project-1ee23',
-    storageBucket: 'first-project-1ee23.appspot.com',
-    iosClientId: '345923041474-0qnkr9ot9cer2vrvtii0ifs57iiqkpol.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBmXa4f25KQh693DQbrB30YZZp3NsAA7hM',
+    appId: '1:13755402140:ios:beac759805b6de31552a59',
+    messagingSenderId: '13755402140',
+    projectId: 'sfera-58b55',
+    storageBucket: 'sfera-58b55.appspot.com',
+    iosClientId: '13755402140-b8q46havifu321cu1sscccqgpns1m52v.apps.googleusercontent.com',
     iosBundleId: 'com.example.sferaApp1',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBDZ1qIOBK3u6kTijwQrLP2MIIV-SDd4HU',
-    appId: '1:345923041474:web:bfc1debfb44eefcd1f635b',
-    messagingSenderId: '345923041474',
-    projectId: 'first-project-1ee23',
-    authDomain: 'first-project-1ee23.firebaseapp.com',
-    storageBucket: 'first-project-1ee23.appspot.com',
-    measurementId: 'G-3SVBRCHR1V',
+    apiKey: 'AIzaSyDN8EpHeNpD9k6xDrM6B759A40GwszqnP4',
+    appId: '1:13755402140:web:b46b52cd21f157aa552a59',
+    messagingSenderId: '13755402140',
+    projectId: 'sfera-58b55',
+    authDomain: 'sfera-58b55.firebaseapp.com',
+    storageBucket: 'sfera-58b55.appspot.com',
   );
 
   static const FirebaseOptions linux = FirebaseOptions(
-    apiKey: 'AIzaSyBDZ1qIOBK3u6kTijwQrLP2MIIV-SDd4HU',
-    appId: '1:345923041474:web:d25c182b7f6181b21f635b',
-    messagingSenderId: '345923041474',
-    projectId: 'first-project-1ee23',
-    authDomain: 'first-project-1ee23.firebaseapp.com',
-    storageBucket: 'first-project-1ee23.appspot.com',
-    measurementId: 'G-8RJYXJ324R',
+    apiKey: 'AIzaSyDN8EpHeNpD9k6xDrM6B759A40GwszqnP4',
+    appId: '1:13755402140:web:4f486459ef0358b8552a59',
+    messagingSenderId: '13755402140',
+    projectId: 'sfera-58b55',
+    authDomain: 'sfera-58b55.firebaseapp.com',
+    storageBucket: 'sfera-58b55.appspot.com',
   );
 }
