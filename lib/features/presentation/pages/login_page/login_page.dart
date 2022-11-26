@@ -1,5 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: AppColors.colorGrey,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
@@ -117,23 +118,34 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             const SizedBox(height: 25),
                             AppTextField(
-                              keyboardTypes: TextInputType.emailAddress,
                               controller: _emailController,
                               icon: Icons.mail_outline_outlined,
                               maxLength: 36,
                               text: 'Email',
+                              validator: (email) {
+                                if (email != null &&
+                                    !EmailValidator.validate(email)) {
+                                  return 'Enter a valid email';
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                             const SizedBox(height: 10),
-                            AppTextField(
-                              keyboardTypes: TextInputType.text,
-                              controller: _passwordController,
-                              icon: Icons.lock_outline,
-                              obscureText: _isActive.value,
-                              maxLength: 16,
-                              text: 'Password',
-                              suffix: ValueListenableBuilder(
-                                builder: (context, value, child) {
-                                  return IconButton(
+                            ValueListenableBuilder(
+                              valueListenable: _isActive,
+                              builder: (context, value, child) {
+                                return AppTextField(
+                                  controller: _passwordController,
+                                  icon: Icons.lock_outline,
+                                  obscureText: _isActive.value,
+                                  maxLength: 16,
+                                  text: 'Password',
+                                  validator: (password) => password != null &&
+                                          password.length < 6
+                                      ? 'The password must contain at least 6 characters'
+                                      : null,
+                                  suffix: IconButton(
                                     splashRadius: 15,
                                     onPressed: () {
                                       if (_isActive.value == true) {
@@ -148,10 +160,9 @@ class _LoginPageState extends State<LoginPage> {
                                           : Icons.visibility_off_outlined,
                                       color: AppColors.color000000,
                                     ),
-                                  );
-                                },
-                                valueListenable: _isActive,
-                              ),
+                                  ),
+                                );
+                              },
                             ),
                             const SizedBox(height: 10),
                             Column(

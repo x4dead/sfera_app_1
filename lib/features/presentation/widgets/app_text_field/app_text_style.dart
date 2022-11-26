@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'package:email_validator/email_validator.dart';
+import 'package:flutter/material.dart';
 import '../../../../themes/colors/colors.dart';
 
 class AppTextField extends StatelessWidget {
@@ -9,22 +10,20 @@ class AppTextField extends StatelessWidget {
     this.suffix,
     this.obscureText,
     this.icon,
-    required this.controller,
-    required this.keyboardTypes,
+    this.controller,
+    this.validator,
   }) : super(key: key);
   final String text;
   final int? maxLength;
   final Widget? suffix;
   final bool? obscureText;
   final IconData? icon;
-  final TextEditingController controller;
-
-  final TextInputType keyboardTypes;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: keyboardTypes,
       obscureText: obscureText ?? false,
       maxLength: maxLength,
       controller: controller,
@@ -43,21 +42,18 @@ class AppTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide.none,
         ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide:
+              const BorderSide(color: AppColors.colorF44336, width: 0.7),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide:
+              const BorderSide(color: AppColors.colorF44336, width: 0.7),
+        ),
       ),
-      validator: (v) {
-        if (keyboardTypes == TextInputType.emailAddress) {
-          if (!v!.contains('@') && !v.contains('.')) {
-            return 'Incorrect email address';
-          } else if (v.length < 12) {
-            return 'Email must contain at least 12 characters';
-          }
-        } else if (keyboardTypes == TextInputType.text) {
-          if (v!.length < 7 && !v.contains(RegExp(r'[A-Z]'))) {
-            return ('Password must be at least 7 characters\n and contain one capital letter');
-          }
-        }
-        return null;
-      },
+      validator: validator,
     );
   }
 }
