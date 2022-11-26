@@ -10,6 +10,7 @@ import 'features/presentation/pages/home_page/home_page.dart';
 import 'features/presentation/pages/login_page/login_page.dart';
 import 'features/presentation/services/firebase_stream.dart';
 import 'firebase_options.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 
 // part 'main_page.dart';
 

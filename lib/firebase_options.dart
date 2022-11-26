@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBmXa4f25KQh693DQbrB30YZZp3NsAA7hM',
-    appId: '1:13755402140:ios:beac759805b6de31552a59',
-    messagingSenderId: '13755402140',
-    projectId: 'sfera-58b55',
-    storageBucket: 'sfera-58b55.appspot.com',
-    iosClientId: '13755402140-b8q46havifu321cu1sscccqgpns1m52v.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDYGxnelQSYju6AqvWR3H25rYtzvdLR2kQ',
+    appId: '1:911288370249:ios:cdcc0fc097337df2326b98',
+    messagingSenderId: '911288370249',
+    projectId: 'sfera3-5507a',
+    storageBucket: 'sfera3-5507a.appspot.com',
+    iosClientId: '911288370249-5aa88eermbsri0q8p8e10fbgk9lfkppp.apps.googleusercontent.com',
     iosBundleId: 'com.example.sferaApp1',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDN8EpHeNpD9k6xDrM6B759A40GwszqnP4',
-    appId: '1:13755402140:web:b46b52cd21f157aa552a59',
-    messagingSenderId: '13755402140',
-    projectId: 'sfera-58b55',
-    authDomain: 'sfera-58b55.firebaseapp.com',
-    storageBucket: 'sfera-58b55.appspot.com',
+    apiKey: 'AIzaSyCgjdylgEWur-8DQSxJ2zUOPQlOBGb5lTE',
+    appId: '1:911288370249:web:3b2aaee5d685c533326b98',
+    messagingSenderId: '911288370249',
+    projectId: 'sfera3-5507a',
+    authDomain: 'sfera3-5507a.firebaseapp.com',
+    storageBucket: 'sfera3-5507a.appspot.com',
   );
 
   static const FirebaseOptions linux = FirebaseOptions(
-    apiKey: 'AIzaSyDN8EpHeNpD9k6xDrM6B759A40GwszqnP4',
-    appId: '1:13755402140:web:4f486459ef0358b8552a59',
-    messagingSenderId: '13755402140',
-    projectId: 'sfera-58b55',
-    authDomain: 'sfera-58b55.firebaseapp.com',
-    storageBucket: 'sfera-58b55.appspot.com',
+    apiKey: 'AIzaSyCgjdylgEWur-8DQSxJ2zUOPQlOBGb5lTE',
+    appId: '1:911288370249:web:4e8759b44ed97a2e326b98',
+    messagingSenderId: '911288370249',
+    projectId: 'sfera3-5507a',
+    authDomain: 'sfera3-5507a.firebaseapp.com',
+    storageBucket: 'sfera3-5507a.appspot.com',
   );
 }
