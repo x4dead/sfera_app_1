@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = sl<FirebaseAuth>().currentUser!;
+  final user = sl<FirebaseAuth>().currentUser;
   final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
@@ -39,22 +39,24 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Поздравляю вы вошли в свой аккаунт\nваш ник: ${user.displayName}',
+                    'Поздравляю вы вошли в свой аккаунт\nваш ник: ${user?.displayName}',
                     textAlign: TextAlign.center,
                     style: AppTextStyle.wBolds20
                         .copyWith(color: AppColors.color000000),
                   ),
+                  const SizedBox(height: 10),
                   AppTextField(
                       controller: nameController,
                       text: 'Name',
                       validator: (name) => name!.length < 3
                           ? 'Name must contain at least 3 characters'
                           : null),
+                  const SizedBox(height: 10),
                   AppButton(
                     onPressed: () {
                       final isValid = formKey.currentState!.validate();
                       if (!isValid) return;
-                      user.updateDisplayName(nameController.text);
+                      user?.updateDisplayName(nameController.text);
                       // nameController.clear();
                       setState(() {});
                     },

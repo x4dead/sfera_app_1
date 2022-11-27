@@ -1,23 +1,22 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sfera_app_1/features/presentation/pages/home_page/home_page.dart';
+import 'package:sfera_app_1/features/presentation/bloc/theme_cubit.dart';
 import 'package:sfera_app_1/features/presentation/resources/custom_icons.dart';
 import 'package:sfera_app_1/features/presentation/resources/images.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
 import '../../../../service_locator.dart';
-import '../../bloc/sfera_bloc.dart';
 import '../../widgets/app_text_field/app_text_style.dart';
 
 part 'widgets/gradient_button.dart';
+part 'widgets/google_button.dart';
+part 'widgets/side_menu.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -31,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final _theme = ThemeCubit();
 
   Future<void> login() async {
     final navigator = Navigator.of(context);
@@ -52,12 +52,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.colorGrey,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
                 alignment: Alignment.topRight,
@@ -67,18 +65,10 @@ class _LoginPageState extends State<LoginPage> {
                       WidgetSpan(
                         child: IconButton(
                           splashRadius: 25,
-                          onPressed: () {},
-                          icon: const Icon(Icons.volume_up_outlined),
-                        ),
-                      ),
-                      const WidgetSpan(
-                        child: SizedBox(width: 15),
-                      ),
-                      WidgetSpan(
-                        child: IconButton(
-                          splashRadius: 25,
-                          onPressed: () {},
-                          icon: const Icon(Icons.volume_up_outlined),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/settingsPage');
+                          },
+                          icon: const Icon(Icons.settings_rounded),
                         ),
                       ),
                       const WidgetSpan(
@@ -190,30 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 10),
-                                GoogleSignInButton(),
+                                GoogleSignInButton(theme: _theme),
                                 const SizedBox(height: 20),
-                                RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                          text: 'Not a member? ',
-                                          style: AppTextStyle.wBolds.copyWith(
-                                              color: AppColors.color000000)),
-                                      WidgetSpan(
-                                        child: InkWell(
-                                          onTap: () {},
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          child: Text(
-                                            'Register now',
-                                            style: AppTextStyle.wBolds.copyWith(
-                                                color: AppColors.color5aa2e7),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                RegisterNowButton(onTap: () {}),
                               ],
                             ),
                           ],
@@ -238,60 +207,39 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class GoogleSignInButton extends StatelessWidget {
-  const GoogleSignInButton({
+class RegisterNowButton extends StatelessWidget {
+  const RegisterNowButton({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
-  Future<void> _googleSignIn(context) async {
-    final googleSignIn = GoogleSignIn();
-    final googleAccount = await googleSignIn.signIn();
-    if (googleAccount != null) {
-      final googleAuth = await googleAccount.authentication;
-      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        try {
-          await sl<FirebaseAuth>().signInWithCredential(
-            GoogleAuthProvider.credential(
-                idToken: googleAuth.idToken,
-                accessToken: googleAuth.accessToken),
-          );
-          Navigator.of(context).pushReplacementNamed('/homePage');
-        } on FirebaseException catch (error) {
-          print(error);
-          // GlobalMethods.errorDialog(
-          // subtitle: '${error.message}', context: context);
-          // } catch (error) {
-          // GlobalMethods.errorDialog(subtitle: '$error', context: context);
-        } finally {}
-      }
-    }
-  }
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      onPressed: () {
-        _googleSignIn(context);
-      },
-      primary: AppColors.color22212f,
-      child: RichText(
-        text: TextSpan(
-          children: [
-            const WidgetSpan(
-              child: Icon(
-                CustomIcons.google,
-                size: 18,
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: 'Not a member? ',
+            style: AppTextStyle.wBolds.copyWith(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.colorFFFFFF
+                  : AppColors.color000000,
+            ),
+          ),
+          WidgetSpan(
+            child: InkWell(
+              onTap: onTap,
+              borderRadius: BorderRadius.circular(5),
+              child: Text(
+                'Register now',
+                style:
+                    AppTextStyle.wBolds.copyWith(color: AppColors.color5aa2e7),
               ),
             ),
-            const WidgetSpan(
-              child: SizedBox(width: 5),
-            ),
-            TextSpan(
-              text: 'Sign in with Google',
-              style: AppTextStyle.wBolds.copyWith(color: AppColors.colorFFFFFF),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
