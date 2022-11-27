@@ -1,5 +1,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:math';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/gestures.dart';
@@ -220,10 +222,13 @@ class _LoginPageState extends State<LoginPage> {
                                       FirebaseAuth.instance
                                           .signInWithCredential(credential);
 
+                                      print(credential);
+
                                       print(result?.accessToken);
                                       print(result?.tokenSecret);
                                     } catch (err) {
-                                      // something went wrong
+                                      print(e);
+                                      return;
                                     }
                                     ;
                                   },
