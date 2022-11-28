@@ -29,22 +29,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: sl<ThemeCubit>(),
-      child: BlocBuilder<ThemeCubit, ThemeStates>(builder: (context, state) {
-        return GetMaterialApp(
-          translations: LocaleString(),
-          locale: const Locale('en', 'US'),
-          theme: state.theme,
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          routes: {
-            '/': (context) => const FirebaseStream(),
-            '/homePage': (context) => const HomePage(),
-            '/loginPage': (context) => const LoginPage(),
-            '/settingsPage': (context) => const SettingsPage(),
-            '/registerPage': (context) => const RegisterPage(),
-          },
-        );
-      }),
+      child: BlocBuilder<ThemeCubit, ThemeStates>(
+        builder: (context, state) {
+          return GetMaterialApp(
+            translations: LocaleString(),
+            locale: const Locale('en', 'US'),
+            theme: state.theme,
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            routes: {
+              '/': (context) => const FirebaseStream(),
+              '/homePage': (context) => const HomePage(),
+              '/loginPage': (context) => const LoginPage(),
+              '/settingsPage': (context) => const SettingsPage(),
+              '/registerPage': (context) => const RegisterPage(),
+            },
+          );
+        },
+      ),
     );
   }
 }
