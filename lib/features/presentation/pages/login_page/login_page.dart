@@ -20,6 +20,7 @@ import '../../../../service_locator.dart';
 import '../../widgets/app_text_field/app_text_style.dart';
 import 'package:desktop_webview_auth/desktop_webview_auth.dart';
 import 'package:desktop_webview_auth/google.dart';
+import 'package:get/get.dart';
 
 part 'widgets/gradient_button.dart';
 
@@ -37,10 +38,6 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
 
   ProviderArgs get args => GoogleSignInArgs(
-      // clientId:
-      //     '911288370249-642u6kn84sqqqg547d1e9vtk6ap9kpd1.apps.googleusercontent.com,',
-      // redirectUri: 'https://sfera3-5507a.firebaseapp.com/__/auth/handler');
-
       redirectUri: 'https://sfera3-5507a.firebaseapp.com/__/auth/handler',
       clientId:
           '911288370249-642u6kn84sqqqg547d1e9vtk6ap9kpd1.apps.googleusercontent.com');
@@ -120,13 +117,14 @@ class _LoginPageState extends State<LoginPage> {
                             Image.asset(AppImages.sfera, scale: 1.5),
                             const SizedBox(height: 10),
                             Text(
-                              'Hello again!'.toUpperCase(),
-                              style: GoogleFonts.bebasNeue(fontSize: 52),
+                              'hello'.tr.toUpperCase(),
+                              style: GoogleFonts.oswald(
+                                  fontSize: 52, fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 1),
-                            const Text(
-                              'Welcome back!',
-                              style: TextStyle(
+                            Text(
+                              'welcom'.tr,
+                              style: const TextStyle(
                                 fontSize: 20,
                               ),
                             ),
@@ -135,11 +133,11 @@ class _LoginPageState extends State<LoginPage> {
                               controller: _emailController,
                               icon: Icons.mail_outline_outlined,
                               maxLength: 36,
-                              text: 'Email',
+                              text: 'Email'.tr,
                               validator: (email) {
                                 if (email != null &&
                                     !EmailValidator.validate(email)) {
-                                  return 'Enter a valid email';
+                                  return 'Enter a valid email'.;
                                 } else {
                                   return null;
                                 }
@@ -196,11 +194,30 @@ class _LoginPageState extends State<LoginPage> {
                                       style: AppTextStyle.wBolds20),
                                 ),
                                 const SizedBox(height: 10),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      var locale = Locale('en', 'US');
+                                      Get.updateLocale(locale);
+                                    },
+                                    child: Text('English')),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      var locale = Locale('ru', 'RU');
+                                      Get.updateLocale(locale);
+                                    },
+                                    child: Text('Russian')),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      var locale = Locale('by', 'BY');
+                                      Get.updateLocale(locale);
+                                    },
+                                    child: Text('Belarusian')),
+                                const SizedBox(height: 10),
                                 Text(
-                                  'or'.toUpperCase(),
-                                  style: GoogleFonts.bebasNeue(
+                                  'or'.tr.toUpperCase(),
+                                  style: GoogleFonts.oswald(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 const SizedBox(height: 10),
                                 AppButton(
@@ -295,35 +312,6 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 }
-
-// class GoogleSignInButton extends StatelessWidget {
-//   const GoogleSignInButton({
-//     Key? key,
-//   }) : super(key: key);
-
-//   Future<void> _googleSignIn(context) async {
-//     final googleSignIn = GoogleSignIn();
-//     final googleAccount = await googleSignIn.signIn();
-//     if (googleAccount != null) {
-//       final googleAuth = await googleAccount.authentication;
-//       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-//         try {
-//           await sl<FirebaseAuth>().signInWithCredential(
-//             GoogleAuthProvider.credential(
-//                 idToken: googleAuth.idToken,
-//                 accessToken: googleAuth.accessToken),
-//           );
-//           Navigator.of(context).pushReplacementNamed('/homePage');
-//         } on FirebaseException catch (error) {
-//           print(error);
-//           // GlobalMethods.errorDialog(
-//           // subtitle: '${error.message}', context: context);
-//           // } catch (error) {
-//           // GlobalMethods.errorDialog(subtitle: '$error', context: context);
-//         } finally {}
-//       }
-//     }
-//   }
 
 @override
 Widget build(BuildContext context) {
