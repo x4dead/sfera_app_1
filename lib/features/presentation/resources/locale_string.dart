@@ -11,7 +11,7 @@ class LocaleString extends Translations {
           'forgot': 'Forgot your password?',
           'sign': 'Sign In',
           'google': 'Sign In with Google',
-          'not': 'Not a member?',
+          'not': 'Not a member? ',
           'register': 'Register now',
           'enter': 'Enter a valid email',
           'the': 'The password must contain at least 6 characters',
@@ -30,13 +30,13 @@ class LocaleString extends Translations {
           'forgot': 'Забыл пороль?',
           'sign': 'Войти',
           'google': 'Войти через Google',
-          'not': 'Не зарегистрирован?',
+          'not': 'Не зарегистрирован? ',
           'register': 'Регистрация',
           'enter': 'Введите действительный адрес электронной почты',
           'the': 'Пароль должен содержать не менее 6 символов',
           'wrong':
               'Неправильный адрес электронной почты или пароль. Попробуйте еще раз.',
-          'unknown':
+          'unknow':
               'Неизвестная ошибка! Повторите попытку или обратитесь в службу поддержки.',
           'authorisation': 'Ошибка авторизации',
           'would': 'Хотите попробовать еще раз?',
@@ -51,7 +51,7 @@ class LocaleString extends Translations {
           'forgot': 'Забыўся пароль?',
           'sign': 'Увайсці',
           'google': 'Увайдзіце праз Google',
-          'not': 'Не зарэгістраваны?',
+          'not': 'Не зарэгістраваны? ',
           'enter': 'Увядзіце сапраўдны адрас электроннай пошты',
           'register': 'Рэгістрацыя',
           'the': 'Пароль павінен змяшчаць не менш за 6 сімвалаў',
