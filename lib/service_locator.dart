@@ -1,6 +1,4 @@
 ﻿// ignore_for_file: unused_import, depend_on_referenced_packages
-
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +10,6 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   //Bloc, Cubit
   sl.registerFactory<SferaBloc>(() => SferaBloc());
   sl.registerLazySingleton<ThemeCubit>(() => ThemeCubit());

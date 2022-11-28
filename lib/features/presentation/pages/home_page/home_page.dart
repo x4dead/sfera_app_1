@@ -1,7 +1,8 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
-import 'package:sfera_app_1/features/presentation/widgets/app_text_field/app_text_style.dart';
+import 'package:sfera_app_1/features/presentation/widgets/app_text_field/app_text_field.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
 
@@ -24,7 +25,34 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              sl<FirebaseAuth>().signOut();
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Are you sure you want to exit?',
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 10),
+                          InkWell(
+                            child: const Text(
+                              'Exit',
+                              style: AppTextStyle.wBolds,
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                              sl<FirebaseAuth>().signOut();
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
             },
             icon: const Icon(Icons.logout)),
       ),
@@ -46,6 +74,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 10),
                   AppTextField(
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[A-z]'),
+                        ),
+                      ],
                       controller: nameController,
                       text: 'Name',
                       validator: (name) => name!.length < 3

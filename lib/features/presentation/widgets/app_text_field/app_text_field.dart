@@ -1,7 +1,7 @@
-﻿import 'package:email_validator/email_validator.dart';
-import 'package:flutter/material.dart';
-import 'package:sfera_app_1/themes/text_style/text_style.dart';
+﻿import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../../themes/colors/colors.dart';
+import '../../../../themes/text_style/text_style.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -13,6 +13,7 @@ class AppTextField extends StatelessWidget {
     this.icon,
     this.controller,
     this.validator,
+    required this.inputFormatters,
   }) : super(key: key);
   final String text;
   final int? maxLength;
@@ -21,27 +22,35 @@ class AppTextField extends StatelessWidget {
   final IconData? icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
       obscureText: obscureText ?? false,
       maxLength: maxLength,
       controller: controller,
+      validator: validator,
+      style: AppTextStyle.w400s14.copyWith(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.color000000.withOpacity(0.85)
+              : null),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
         counterText: '',
         hintText: '$text:',
         hintStyle: TextStyle(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? AppColors.color000000
-                : null),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.color000000.withOpacity(0.7)
+              : null,
+        ),
         filled: true,
         fillColor: AppColors.colorFFFFFF,
         suffixIcon: suffix,
         prefixIcon: Icon(
           icon,
-          color: AppColors.color000000,
+          color: AppColors.color000000.withOpacity(0.85),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
@@ -58,7 +67,6 @@ class AppTextField extends StatelessWidget {
               const BorderSide(color: AppColors.colorF44336, width: 0.7),
         ),
       ),
-      validator: validator,
     );
   }
 }

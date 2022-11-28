@@ -572,8 +572,7 @@ abstract class _Initial implements SferaStates {
 mixin _$SferaEvents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String email, String password, bool Function()? formKey)
+    required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
@@ -581,7 +580,7 @@ mixin _$SferaEvents {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password, bool Function()? formKey)?
+    TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
@@ -589,8 +588,7 @@ mixin _$SferaEvents {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password, bool Function()? formKey)?
-        loginByEmail,
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
@@ -644,7 +642,7 @@ abstract class _$$_LoginByEmailCopyWith<$Res> {
           _$_LoginByEmail value, $Res Function(_$_LoginByEmail) then) =
       __$$_LoginByEmailCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password, bool Function()? formKey});
+  $Res call({String email, String password, bool isValid});
 }
 
 /// @nodoc
@@ -660,7 +658,7 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? formKey = freezed,
+    Object? isValid = null,
   }) {
     return _then(_$_LoginByEmail(
       email: null == email
@@ -671,10 +669,10 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      formKey: freezed == formKey
-          ? _value.formKey
-          : formKey // ignore: cast_nullable_to_non_nullable
-              as bool Function()?,
+      isValid: null == isValid
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -683,18 +681,18 @@ class __$$_LoginByEmailCopyWithImpl<$Res>
 
 class _$_LoginByEmail implements _LoginByEmail {
   const _$_LoginByEmail(
-      {required this.email, required this.password, required this.formKey});
+      {required this.email, required this.password, required this.isValid});
 
   @override
   final String email;
   @override
   final String password;
   @override
-  final bool Function()? formKey;
+  final bool isValid;
 
   @override
   String toString() {
-    return 'SferaEvents.loginByEmail(email: $email, password: $password, formKey: $formKey)';
+    return 'SferaEvents.loginByEmail(email: $email, password: $password, isValid: $isValid)';
   }
 
   @override
@@ -705,11 +703,11 @@ class _$_LoginByEmail implements _LoginByEmail {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.formKey, formKey) || other.formKey == formKey));
+            (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, formKey);
+  int get hashCode => Object.hash(runtimeType, email, password, isValid);
 
   @JsonKey(ignore: true)
   @override
@@ -720,37 +718,35 @@ class _$_LoginByEmail implements _LoginByEmail {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String email, String password, bool Function()? formKey)
+    required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
   }) {
-    return loginByEmail(email, password, formKey);
+    return loginByEmail(email, password, isValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password, bool Function()? formKey)?
+    TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
   }) {
-    return loginByEmail?.call(email, password, formKey);
+    return loginByEmail?.call(email, password, isValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password, bool Function()? formKey)?
-        loginByEmail,
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
-      return loginByEmail(email, password, formKey);
+      return loginByEmail(email, password, isValid);
     }
     return orElse();
   }
@@ -794,11 +790,11 @@ abstract class _LoginByEmail implements SferaEvents {
   const factory _LoginByEmail(
       {required final String email,
       required final String password,
-      required final bool Function()? formKey}) = _$_LoginByEmail;
+      required final bool isValid}) = _$_LoginByEmail;
 
   String get email;
   String get password;
-  bool Function()? get formKey;
+  bool get isValid;
   @JsonKey(ignore: true)
   _$$_LoginByEmailCopyWith<_$_LoginByEmail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -842,8 +838,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String email, String password, bool Function()? formKey)
+    required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
@@ -854,7 +849,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password, bool Function()? formKey)?
+    TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
@@ -865,8 +860,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password, bool Function()? formKey)?
-        loginByEmail,
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),
@@ -954,8 +948,7 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String email, String password, bool Function()? formKey)
+    required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function() loginByGoogle,
     required TResult Function() forgotPassword,
@@ -966,7 +959,7 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password, bool Function()? formKey)?
+    TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function()? loginByGoogle,
     TResult? Function()? forgotPassword,
@@ -977,8 +970,7 @@ class _$_ForgotPassword implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password, bool Function()? formKey)?
-        loginByEmail,
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function()? loginByGoogle,
     TResult Function()? forgotPassword,
     required TResult orElse(),

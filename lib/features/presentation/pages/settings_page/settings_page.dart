@@ -1,9 +1,7 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../../../../service_locator.dart';
 import '../../bloc/theme_cubit.dart';
+import 'package:get/get.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -13,22 +11,50 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  String language = "English";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ElevatedButton(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ElevatedButton(
                 onPressed: () {
                   sl<ThemeCubit>().changeTheme();
                   // setState(() {});
                 },
-                child: const Text('Change theme'))
-          ],
+                child: const Text('Change theme'),
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  var locale = const Locale('en', 'US');
+                  Get.updateLocale(locale);
+                },
+                child: const Text('English'),
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  var locale = const Locale('ru', 'RU');
+                  Get.updateLocale(locale);
+                },
+                child: const Text('Russian'),
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  var locale = const Locale('by', 'BY');
+                  Get.updateLocale(locale);
+                },
+                child: const Text('Belarusian'),
+              ),
+            ],
+          ),
         ),
       ),
     );

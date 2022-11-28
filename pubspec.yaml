@@ -48,10 +48,13 @@ dependencies:
   firebase_core_platform_interface: 4.5.1
   google_sign_in: ^5.4.2
 
+  get:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  #   test:
+  # build_runner: ^2.2.1
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

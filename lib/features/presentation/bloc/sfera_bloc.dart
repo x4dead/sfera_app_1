@@ -1,37 +1,37 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get/get.dart';
+import '../../../service_locator.dart';
+
 part 'sfera_bloc.freezed.dart';
 
 class SferaBloc extends Bloc<SferaEvents, SferaStates> {
   SferaBloc() : super(const SferaStates.initial()) {
     on<_LoginByEmail>(
       (event, emit) async {
-        emit(const SferaStates.loading());
-        final isValid = event.formKey;
-        if (isValid != null) return;
-        try {
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: event.email.trim(),
-            password: event.password.trim(),
-          );
-          emit(const SferaStates.success());
-        } on FirebaseAuthException catch (e) {
-          print(e.code);
-
-          if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-            emit(
-              const SferaStates.error(
-                message: 'Неправильный email или пароль. Повторите попытку',
-              ),
+        if (event.isValid) {
+          emit(const SferaStates.loading());
+          try {
+            await sl<FirebaseAuth>().signInWithEmailAndPassword(
+              email: event.email,
+              password: event.password,
             );
-          } else {
-            emit(
-              const SferaStates.error(
-                message:
-                    'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
-              ),
-            );
+            emit(const SferaStates.success());
+          } on FirebaseAuthException catch (e) {
+            if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+              emit(
+                SferaStates.error(
+                  message: 'wrong'.tr,
+                ),
+              );
+            } else {
+              emit(
+                SferaStates.error(
+                  message: 'unknown'.tr,
+                ),
+              );
+            }
           }
         }
       },
@@ -52,7 +52,6 @@ class SferaEvents with _$SferaEvents {
   const factory SferaEvents.loginByEmail(
       {required String email,
       required String password,
-      required bool Function()? formKey}) = _LoginByEmail;
+      required bool isValid}) = _LoginByEmail;
   const factory SferaEvents.loginByGoogle() = _LoginByGoogle;
-  const factory SferaEvents.forgotPassword() = _ForgotPassword;
 }
