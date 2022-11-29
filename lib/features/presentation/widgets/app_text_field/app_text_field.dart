@@ -13,7 +13,7 @@ class AppTextField extends StatelessWidget {
     this.icon,
     this.controller,
     this.validator,
-    required this.inputFormatters,
+    this.inputFormatters,
   }) : super(key: key);
   final String text;
   final int? maxLength;
@@ -22,12 +22,14 @@ class AppTextField extends StatelessWidget {
   final IconData? icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final List<TextInputFormatter>? inputFormatters;
+  final RegExp? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      inputFormatters: inputFormatters,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(inputFormatters ?? ''),
+      ],
       obscureText: obscureText ?? false,
       maxLength: maxLength,
       controller: controller,

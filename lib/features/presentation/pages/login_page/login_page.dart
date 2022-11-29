@@ -43,7 +43,13 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocProvider.value(
           value: _bloc,
           child: BlocConsumer<SferaBloc, SferaStates>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              state.mapOrNull(
+                success: (value) {
+                  Navigator.pushNamed(context, '/homePage');
+                },
+              );
+            },
             builder: (context, state) {
               return state.mapOrNull(
                     initial: (_) => _MainLayoutWidget(

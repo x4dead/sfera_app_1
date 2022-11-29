@@ -12,6 +12,7 @@ class AuthErrorWidget extends StatelessWidget {
     return AlertDialog(
       title: Text(
         'authorisation'.tr,
+        maxLines: 2,
         style: AppTextStyle.wBolds.copyWith(color: AppColors.colorF44336),
       ),
       content: SingleChildScrollView(
@@ -21,7 +22,7 @@ class AuthErrorWidget extends StatelessWidget {
               message,
               style: AppTextStyle.w400s14.copyWith(
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? AppColors.color000000
+                      ? AppColors.colorFFFFFF
                       : null),
             ),
           ],

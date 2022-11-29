@@ -11,7 +11,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  String language = "English";
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  String language = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +30,61 @@ class _SettingsPageState extends State<SettingsPage> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
+                    splashRadius: 25,
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: 300,
+                    child: Column(
+                      children: [
+                        RadioListTile(
+                          key: ValueKey('en'),
+                          title: const Text("English"),
+                          value: "en",
+                          groupValue: language,
+                          onChanged: (value) {
+                            var locale = const Locale('en', 'US');
+                            Get.updateLocale(locale);
+                            setState(() {
+                              language = value.toString();
+                            });
+                          },
+                        ),
+                        RadioListTile(
+                          key: ValueKey('ru'),
+                          title: const Text("Russian"),
+                          value: "ru",
+                          groupValue: language,
+                          onChanged: (value) {
+                            var locale = const Locale('ru', 'RU');
+                            Get.updateLocale(locale);
+                            setState(() {
+                              language = value.toString();
+                            });
+                          },
+                        ),
+                        RadioListTile(
+                          key: ValueKey('bel'),
+                          title: const Text("Belarusian"),
+                          value: "bel",
+                          groupValue: language,
+                          onChanged: (value) {
+                            var locale = const Locale('by', 'BY');
+                            Get.updateLocale(locale);
+                            setState(() {
+                              language = value.toString();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 ElevatedButton(
@@ -40,10 +96,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 const SizedBox(height: 15),
                 ElevatedButton(
-                  onPressed: () {
-                    var locale = const Locale('en', 'US');
-                    Get.updateLocale(locale);
-                  },
+                  onPressed: () {},
                   child: const Text('English'),
                 ),
                 const SizedBox(height: 15),

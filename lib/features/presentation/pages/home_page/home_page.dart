@@ -1,4 +1,6 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
@@ -17,96 +19,104 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = sl<FirebaseAuth>().currentUser;
+
   final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'Are you sure you want to exit?',
-                                    textAlign: TextAlign.center,
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              const LogOutButton(),
+              SizedBox(
+                width: 300,
+                child: Column(
+                  children: [
+                    Text(
+                      'Поздравляю вы вошли в свой аккаунт ваш ник: ${user?.displayName}',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.wBolds20
+                          .copyWith(color: AppColors.color000000),
+                    ),
+                    const SizedBox(height: 20),
+                    AppTextField(
+                      maxLength: 12,
+                      inputFormatters: RegExp(r'[A-Za-z]+'),
+                      controller: nameController,
+                      text: 'Name',
+                      validator: (name) {
+                        RegExp(r'[A-Za-z]+');
+                        if (name!.length < 3) {
+                          return 'Name must contain at least 3 characters';
+                        }
+                        {
+                          return null;
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    AppButton(
+                      primary: AppColors.color06325f,
+                      child: const Text(
+                        'Change name',
+                        style: AppTextStyle.wBolds20,
+                      ),
+                      onPressed: () async {
+                        final isValid = formKey.currentState!.validate();
+                        if (isValid) {
+                          await showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        'Are you sure you?',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Divider(
+                                        color: AppColors.color000000
+                                            .withOpacity(0.5),
+                                        endIndent: 7,
+                                        indent: 7,
+                                        height: 1.5,
+                                      ),
+                                      const SizedBox(height: 5),
+                                      InkWell(
+                                        splashColor: AppColors.colorTransparent,
+                                        overlayColor: MaterialStateProperty.all(
+                                            AppColors.colorTransparent),
+                                        child: const Text(
+                                          'Yes',
+                                          style: AppTextStyle.wBolds,
+                                        ),
+                                        onTap: () async {
+                                          await user?.updateDisplayName(
+                                            nameController.text,
+                                          );
+                                          Navigator.pop(context);
+                                          nameController.clear();
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 10),
-                                  InkWell(
-                                    child: const Text(
-                                      'Exit',
-                                      style: AppTextStyle.wBolds,
-                                    ),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      sl<FirebaseAuth>().signOut();
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
+                                ),
+                              );
+                            },
                           );
-                        },
-                      );
-                    },
-                    icon: const Icon(Icons.logout),
-                  ),
+                        }
+                      },
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 300,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Поздравляю вы вошли в свой аккаунт ваш ник: ${user?.displayName}',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.wBolds20
-                            .copyWith(color: AppColors.color000000),
-                      ),
-                      const SizedBox(height: 10),
-                      AppTextField(
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r'[A-z]'),
-                            ),
-                          ],
-                          controller: nameController,
-                          text: 'Name',
-                          validator: (name) => name!.length < 3
-                              ? 'Name must contain at least 3 characters'
-                              : null),
-                      const SizedBox(height: 10),
-                      AppButton(
-                        onPressed: () {
-                          final isValid = formKey.currentState!.validate();
-                          if (!isValid) return;
-                          user?.updateDisplayName(nameController.text);
-                          // nameController.clear();
-                          setState(() {});
-                        },
-                        child: const Text(
-                          'Change name',
-                          style: AppTextStyle.wBolds20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -117,5 +127,54 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     nameController.dispose();
     super.dispose();
+  }
+}
+
+class LogOutButton extends StatelessWidget {
+  const LogOutButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () async {
+            await showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Are you sure you want to exit?',
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 10),
+                        InkWell(
+                          child: const Text(
+                            'Exit',
+                            style: AppTextStyle.wBolds,
+                          ),
+                          onTap: () {
+                            sl<FirebaseAuth>().signOut();
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
   }
 }
