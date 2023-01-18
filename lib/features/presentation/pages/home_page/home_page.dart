@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_text_field/app_text_field.dart';
+import 'package:sfera_app_1/features/presentation/widgets/app_text_field/field_from_class.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
 
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           key: formKey,
           child: Column(
             children: [
-              const LogOutButton(),
+              const LogoutButton(),
               SizedBox(
                 width: 300,
                 child: Column(
@@ -43,19 +44,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 20),
                     AppTextField(
-                      maxLength: 12,
-                      inputFormatters: RegExp(r'[A-Za-z]+'),
+                      icon: Icons.person,
+                      maxLength: 16,
+                      inputFormatters: FieldFormClass.regExpName,
                       controller: nameController,
                       text: 'Name',
-                      validator: (name) {
-                        RegExp(r'[A-Za-z]+');
-                        if (name!.length < 3) {
-                          return 'Name must contain at least 3 characters';
-                        }
-                        {
-                          return null;
-                        }
-                      },
+                      validator: (name) => FieldFormClass.validatorName(name),
                     ),
                     const SizedBox(height: 20),
                     AppButton(
@@ -70,43 +64,17 @@ class _HomePageState extends State<HomePage> {
                           await showDialog(
                             context: context,
                             builder: (context) {
-                              return AlertDialog(
-                                content: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        'Are you sure you?',
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Divider(
-                                        color: AppColors.color000000
-                                            .withOpacity(0.5),
-                                        endIndent: 7,
-                                        indent: 7,
-                                        height: 1.5,
-                                      ),
-                                      const SizedBox(height: 5),
-                                      InkWell(
-                                        splashColor: AppColors.colorTransparent,
-                                        overlayColor: MaterialStateProperty.all(
-                                            AppColors.colorTransparent),
-                                        child: const Text(
-                                          'Yes',
-                                          style: AppTextStyle.wBolds,
-                                        ),
-                                        onTap: () async {
-                                          await user?.updateDisplayName(
-                                            nameController.text,
-                                          );
-                                          Navigator.pop(context);
-                                          nameController.clear();
-                                          setState(() {});
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              return DialogWidget(
+                                title: 'Are you sure?',
+                                actionTitle: 'Yes',
+                                actionOnTap: () async {
+                                  Navigator.pop(context);
+                                  await user?.updateDisplayName(
+                                    nameController.text,
+                                  );
+                                  nameController.clear();
+                                  setState(() {});
+                                },
                               );
                             },
                           );
@@ -130,8 +98,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class LogOutButton extends StatelessWidget {
-  const LogOutButton({
+class LogoutButton extends StatelessWidget {
+  const LogoutButton({
     Key? key,
   }) : super(key: key);
 
@@ -147,34 +115,52 @@ class LogOutButton extends StatelessWidget {
             await showDialog(
               context: context,
               builder: (context) {
-                return AlertDialog(
-                  content: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const Text(
-                          'Are you sure you want to exit?',
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 10),
-                        InkWell(
-                          child: const Text(
-                            'Exit',
-                            style: AppTextStyle.wBolds,
-                          ),
-                          onTap: () {
-                            sl<FirebaseAuth>().signOut();
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                return DialogWidget(
+                  title: 'Are you sure you want to exit?',
+                  actionTitle: 'Exit',
+                  actionOnTap: () {
+                    sl<FirebaseAuth>().signOut();
+                    Navigator.pushNamed(context, '/loginPage');
+                  },
                 );
               },
             );
           },
         ),
       ),
+    );
+  }
+}
+
+class DialogWidget extends StatelessWidget {
+  const DialogWidget(
+      {super.key,
+      required this.title,
+      required this.actionTitle,
+      required this.actionOnTap});
+
+  final String title;
+  final String actionTitle;
+  final Function() actionOnTap;
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      actionsPadding:
+          const EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 5),
+      titlePadding: const EdgeInsets.all(20),
+      title: Text(title, textAlign: TextAlign.center),
+      titleTextStyle: AppTextStyle.w400s14
+          .copyWith(color: AppColors.color000000, fontSize: 16),
+      actionsAlignment: MainAxisAlignment.center,
+      actions: [
+        InkWell(
+          splashColor: AppColors.colorTransparent,
+          overlayColor: MaterialStateProperty.all(AppColors.colorTransparent),
+          onTap: actionOnTap,
+          child: Text(actionTitle, style: AppTextStyle.wBolds),
+        ),
+      ],
     );
   }
 }

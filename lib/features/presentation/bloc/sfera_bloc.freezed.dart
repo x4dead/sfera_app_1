@@ -574,23 +574,20 @@ mixin _$SferaEvents {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
-    required TResult Function() loginByGoogle,
-    required TResult Function() forgotPassword,
+    required TResult Function(ProviderArgs args) loginByGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
-    TResult? Function()? loginByGoogle,
-    TResult? Function()? forgotPassword,
+    TResult? Function(ProviderArgs args)? loginByGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
-    TResult Function()? loginByGoogle,
-    TResult Function()? forgotPassword,
+    TResult Function(ProviderArgs args)? loginByGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -598,21 +595,18 @@ mixin _$SferaEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
-    required TResult Function(_ForgotPassword value) forgotPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
-    TResult? Function(_ForgotPassword value)? forgotPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
-    TResult Function(_ForgotPassword value)? forgotPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -720,8 +714,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
-    required TResult Function() loginByGoogle,
-    required TResult Function() forgotPassword,
+    required TResult Function(ProviderArgs args) loginByGoogle,
   }) {
     return loginByEmail(email, password, isValid);
   }
@@ -731,8 +724,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
-    TResult? Function()? loginByGoogle,
-    TResult? Function()? forgotPassword,
+    TResult? Function(ProviderArgs args)? loginByGoogle,
   }) {
     return loginByEmail?.call(email, password, isValid);
   }
@@ -741,8 +733,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
-    TResult Function()? loginByGoogle,
-    TResult Function()? forgotPassword,
+    TResult Function(ProviderArgs args)? loginByGoogle,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -756,7 +747,6 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
-    required TResult Function(_ForgotPassword value) forgotPassword,
   }) {
     return loginByEmail(this);
   }
@@ -766,7 +756,6 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
-    TResult? Function(_ForgotPassword value)? forgotPassword,
   }) {
     return loginByEmail?.call(this);
   }
@@ -776,7 +765,6 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
-    TResult Function(_ForgotPassword value)? forgotPassword,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -805,6 +793,8 @@ abstract class _$$_LoginByGoogleCopyWith<$Res> {
   factory _$$_LoginByGoogleCopyWith(
           _$_LoginByGoogle value, $Res Function(_$_LoginByGoogle) then) =
       __$$_LoginByGoogleCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProviderArgs args});
 }
 
 /// @nodoc
@@ -814,36 +804,59 @@ class __$$_LoginByGoogleCopyWithImpl<$Res>
   __$$_LoginByGoogleCopyWithImpl(
       _$_LoginByGoogle _value, $Res Function(_$_LoginByGoogle) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? args = null,
+  }) {
+    return _then(_$_LoginByGoogle(
+      args: null == args
+          ? _value.args
+          : args // ignore: cast_nullable_to_non_nullable
+              as ProviderArgs,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_LoginByGoogle implements _LoginByGoogle {
-  const _$_LoginByGoogle();
+  const _$_LoginByGoogle({required this.args});
+
+  @override
+  final ProviderArgs args;
 
   @override
   String toString() {
-    return 'SferaEvents.loginByGoogle()';
+    return 'SferaEvents.loginByGoogle(args: $args)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginByGoogle);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoginByGoogle &&
+            (identical(other.args, args) || other.args == args));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, args);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoginByGoogleCopyWith<_$_LoginByGoogle> get copyWith =>
+      __$$_LoginByGoogleCopyWithImpl<_$_LoginByGoogle>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
-    required TResult Function() loginByGoogle,
-    required TResult Function() forgotPassword,
+    required TResult Function(ProviderArgs args) loginByGoogle,
   }) {
-    return loginByGoogle();
+    return loginByGoogle(args);
   }
 
   @override
@@ -851,22 +864,20 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
-    TResult? Function()? loginByGoogle,
-    TResult? Function()? forgotPassword,
+    TResult? Function(ProviderArgs args)? loginByGoogle,
   }) {
-    return loginByGoogle?.call();
+    return loginByGoogle?.call(args);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
-    TResult Function()? loginByGoogle,
-    TResult Function()? forgotPassword,
+    TResult Function(ProviderArgs args)? loginByGoogle,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
-      return loginByGoogle();
+      return loginByGoogle(args);
     }
     return orElse();
   }
@@ -876,7 +887,6 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
-    required TResult Function(_ForgotPassword value) forgotPassword,
   }) {
     return loginByGoogle(this);
   }
@@ -886,7 +896,6 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
-    TResult? Function(_ForgotPassword value)? forgotPassword,
   }) {
     return loginByGoogle?.call(this);
   }
@@ -896,7 +905,6 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
-    TResult Function(_ForgotPassword value)? forgotPassword,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
@@ -907,115 +915,11 @@ class _$_LoginByGoogle implements _LoginByGoogle {
 }
 
 abstract class _LoginByGoogle implements SferaEvents {
-  const factory _LoginByGoogle() = _$_LoginByGoogle;
-}
+  const factory _LoginByGoogle({required final ProviderArgs args}) =
+      _$_LoginByGoogle;
 
-/// @nodoc
-abstract class _$$_ForgotPasswordCopyWith<$Res> {
-  factory _$$_ForgotPasswordCopyWith(
-          _$_ForgotPassword value, $Res Function(_$_ForgotPassword) then) =
-      __$$_ForgotPasswordCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ForgotPasswordCopyWithImpl<$Res>
-    extends _$SferaEventsCopyWithImpl<$Res, _$_ForgotPassword>
-    implements _$$_ForgotPasswordCopyWith<$Res> {
-  __$$_ForgotPasswordCopyWithImpl(
-      _$_ForgotPassword _value, $Res Function(_$_ForgotPassword) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_ForgotPassword implements _ForgotPassword {
-  const _$_ForgotPassword();
-
-  @override
-  String toString() {
-    return 'SferaEvents.forgotPassword()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ForgotPassword);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String email, String password, bool isValid)
-        loginByEmail,
-    required TResult Function() loginByGoogle,
-    required TResult Function() forgotPassword,
-  }) {
-    return forgotPassword();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String password, bool isValid)?
-        loginByEmail,
-    TResult? Function()? loginByGoogle,
-    TResult? Function()? forgotPassword,
-  }) {
-    return forgotPassword?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String password, bool isValid)? loginByEmail,
-    TResult Function()? loginByGoogle,
-    TResult Function()? forgotPassword,
-    required TResult orElse(),
-  }) {
-    if (forgotPassword != null) {
-      return forgotPassword();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoginByEmail value) loginByEmail,
-    required TResult Function(_LoginByGoogle value) loginByGoogle,
-    required TResult Function(_ForgotPassword value) forgotPassword,
-  }) {
-    return forgotPassword(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoginByEmail value)? loginByEmail,
-    TResult? Function(_LoginByGoogle value)? loginByGoogle,
-    TResult? Function(_ForgotPassword value)? forgotPassword,
-  }) {
-    return forgotPassword?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoginByEmail value)? loginByEmail,
-    TResult Function(_LoginByGoogle value)? loginByGoogle,
-    TResult Function(_ForgotPassword value)? forgotPassword,
-    required TResult orElse(),
-  }) {
-    if (forgotPassword != null) {
-      return forgotPassword(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ForgotPassword implements SferaEvents {
-  const factory _ForgotPassword() = _$_ForgotPassword;
+  ProviderArgs get args;
+  @JsonKey(ignore: true)
+  _$$_LoginByGoogleCopyWith<_$_LoginByGoogle> get copyWith =>
+      throw _privateConstructorUsedError;
 }

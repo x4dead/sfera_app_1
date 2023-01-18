@@ -10,21 +10,21 @@ class _GoogleSignInButton extends StatelessWidget {
   final ThemeCubit theme;
 
   ProviderArgs get args => GoogleSignInArgs(
-      redirectUri: 'https://sfera-58b55.firebaseapp.com/__/auth/handler',
-      clientId:
-          '13755402140-1fko6sj82c20es2650fq1v7vcbgpcr0v.apps.googleusercontent.com');
+        redirectUri: AppConstants.redirectUri,
+        clientId: AppConstants.clientId,
+      );
   Future<void> _googleSignIn() async {
     final googleSignInArgs = GoogleSignInArgs(
-      clientId:
-          '13755402140-1fko6sj82c20es2650fq1v7vcbgpcr0v.apps.googleusercontent.com',
-      redirectUri: 'https://sfera-58b55.firebaseapp.com/__/auth/handler',
+      clientId: AppConstants.clientId,
+      redirectUri: AppConstants.redirectUri,
       scope: 'email',
     );
     try {
-      final result = await DesktopWebviewAuth.signIn(args);
+      final result =
+          await DesktopWebviewAuth.signIn(args, height: 700, width: 1000);
       final credential =
           GoogleAuthProvider.credential(accessToken: result?.accessToken);
-      FirebaseAuth.instance.signInWithCredential(credential);
+      sl<FirebaseAuth>().signInWithCredential(credential);
     } catch (e) {
       return;
     }
@@ -35,6 +35,9 @@ class _GoogleSignInButton extends StatelessWidget {
     return AppButton(
       onPressed: () {
         _googleSignIn();
+        // sl<SferaBloc>().add(
+        //   SferaEvents.loginByGoogle(args: args),
+        // );
       },
       primary: AppColors.color22212f,
       child: RichText(
