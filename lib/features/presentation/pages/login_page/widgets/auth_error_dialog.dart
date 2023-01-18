@@ -16,29 +16,30 @@ class AuthErrorWidget extends StatelessWidget {
         style: AppTextStyle.wBolds.copyWith(color: AppColors.colorF44336),
       ),
       content: SingleChildScrollView(
-        child: ListBody(
-          children: [
-            Text(
-              message,
-              style: AppTextStyle.w400s14.copyWith(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? AppColors.colorFFFFFF
-                      : null),
-            ),
-          ],
+        child: Text(
+          message,
+          style: AppTextStyle.w400s14.copyWith(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.colorFFFFFF
+                  : null),
         ),
       ),
       actions: [
-        InkWell(
-          child: Text(
-            'try'.tr,
-            style: AppTextStyle.wBolds,
+        TextButton(
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all(
+              AppColors.colorFFFFFF.withOpacity(0.2),
+            ),
           ),
-          onTap: () {
+          onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/loginPage', (route) => false);
           },
-        ),
+          child: Text(
+            'try'.tr,
+            style: AppTextStyle.wBolds.copyWith(color: AppColors.colorFFFFFF),
+          ),
+        )
       ],
     );
   }

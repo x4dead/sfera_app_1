@@ -1,7 +1,11 @@
-﻿import 'package:firebase_auth/firebase_auth.dart';
+﻿// ignore_for_file: depend_on_referenced_packages
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:desktop_webview_auth/desktop_webview_auth.dart';
+import 'package:desktop_webview_auth/google.dart';
 import 'package:get/get.dart';
+import 'package:sfera_app_1/features/presentation/resources/app_constants.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../service_locator.dart';
 
 part 'sfera_bloc.freezed.dart';
@@ -36,6 +40,26 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
         }
       },
     );
+
+    on<_LoginByGoogle>(
+      (event, emit) async {
+        final googleSignInArgs = GoogleSignInArgs(
+          clientId: AppConstants.clientId,
+          redirectUri: AppConstants.redirectUri,
+          scope: 'email',
+        );
+        try {
+          final result = await DesktopWebviewAuth.signIn(event.args);
+          final credential =
+              GoogleAuthProvider.credential(accessToken: result?.accessToken);
+          // emit(const SferaStates.loading());
+          await sl<FirebaseAuth>().signInWithCredential(credential);
+          emit(const SferaStates.success());
+        } catch (e) {
+          print(e);
+        }
+      },
+    );
   }
 }
 
@@ -53,5 +77,6 @@ class SferaEvents with _$SferaEvents {
       {required String email,
       required String password,
       required bool isValid}) = _LoginByEmail;
-  const factory SferaEvents.loginByGoogle() = _LoginByGoogle;
+  const factory SferaEvents.loginByGoogle({required ProviderArgs args}) =
+      _LoginByGoogle;
 }

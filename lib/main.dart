@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sfera_app_1/features/presentation/pages/settings_page/settings_page.dart';
+import 'package:sfera_app_1/features/presentation/resources/app_constants.dart';
 import 'package:sfera_app_1/features/presentation/resources/locale_string.dart';
 import 'package:sfera_app_1/service_locator.dart' as di;
 import 'package:sfera_app_1/service_locator.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return GetMaterialApp(
             translations: LocaleString(),
-            locale: const Locale('en', 'US'),
+            locale: AppConstants.en,
             theme: state.theme,
             debugShowCheckedModeBanner: false,
             initialRoute: '/',

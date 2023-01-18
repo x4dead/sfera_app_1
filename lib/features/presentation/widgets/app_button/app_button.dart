@@ -8,7 +8,7 @@ class AppButton extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
-  final Function() onPressed;
+  final void Function() onPressed;
   final Color? primary;
   final Widget child;
   @override
