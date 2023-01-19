@@ -6,11 +6,13 @@ import 'package:desktop_webview_auth/desktop_webview_auth.dart';
 import 'package:desktop_webview_auth/google.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sfera_app_1/features/presentation/bloc/theme_cubit.dart';
 import 'package:sfera_app_1/features/presentation/resources/app_constants.dart';
 import 'package:sfera_app_1/features/presentation/resources/custom_icons.dart';
 import 'package:sfera_app_1/features/presentation/resources/images.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
+import 'package:sfera_app_1/features/presentation/widgets/app_dialog/error_dialog.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_text_field/field_from_class.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
@@ -22,7 +24,6 @@ part 'widgets/buttons/google_button.dart';
 part 'widgets/buttons/gradient_button.dart';
 part 'widgets/buttons/register_now_button.dart';
 part 'widgets/main_layout_widget.dart';
-part 'widgets/auth_error_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -36,6 +37,10 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  ProviderArgs get args => GoogleSignInArgs(
+        redirectUri: AppConstants.redirectUri,
+        clientId: AppConstants.clientId,
+      );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,37 +54,48 @@ class _LoginPageState extends State<LoginPage> {
                 success: (value) {
                   Navigator.pushNamed(context, '/homePage');
                 },
+                error: (error) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => ErrorDialog(
+                        content: error.message, title: 'authorisation'),
+                  );
+                },
+                openloading: (_) {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                },
+                closeloading: (value) {
+                  return Navigator.of(context).pop();
+                },
               );
             },
             builder: (context, state) {
-              return state.mapOrNull(
-                    initial: (_) => _MainLayoutWidget(
-                      emailController: _emailController,
-                      passwordController: _passwordController,
-                      formKey: formKey,
-                      onTap: () {
-                        final isValid = formKey.currentState!.validate();
-                        _bloc.add(
-                          SferaEvents.loginByEmail(
-                            email: _emailController.text.trim(),
-                            password: _passwordController.text.trim(),
-                            isValid: isValid,
-                          ),
-                        );
-                      },
-                    ),
-                    error: (v) {
-                      return AuthErrorWidget(
-                        message: v.message,
-                      );
-                    },
-                    loading: (_) => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ) ??
-                  AuthErrorWidget(
-                    message: 'unknow'.tr,
+              return _MainLayoutWidget(
+                emailController: _emailController,
+                passwordController: _passwordController,
+                formKey: formKey,
+                onTapGoogleButton: () {
+                  _bloc.add(
+                    SferaEvents.loginByGoogle(args: args),
                   );
+                },
+                onTapGradientButton: () {
+                  final isValid = formKey.currentState!.validate();
+                  _bloc.add(
+                    SferaEvents.loginByEmail(
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                      isValid: isValid,
+                    ),
+                  );
+                },
+              );
             },
           ),
         ),

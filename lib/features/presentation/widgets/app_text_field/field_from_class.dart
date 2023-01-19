@@ -23,7 +23,7 @@ class FieldFormClass {
 
   static RegExp regExpPassword =
       RegExp(r'^[A-Za-z0-9!@#\$&*~а-яА-Я]+', unicode: true);
-  static RegExp regExpEmail = RegExp(r'^[a-zA-Z0-9@._-]+');
+  static RegExp regExpEmail = RegExp(r'^[a-z0-9@._-]+');
   static RegExp regExpName = RegExp(r'^[A-Za-z]+', unicode: true);
 
   static String? validatorName(String? name) {

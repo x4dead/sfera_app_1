@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SferaStates {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -26,7 +27,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -34,7 +36,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -43,7 +46,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -51,7 +55,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -59,7 +64,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -87,34 +93,35 @@ class _$SferaStatesCopyWithImpl<$Res, $Val extends SferaStates>
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$_CloseLoadingCopyWith<$Res> {
+  factory _$$_CloseLoadingCopyWith(
+          _$_CloseLoading value, $Res Function(_$_CloseLoading) then) =
+      __$$_CloseLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$SferaStatesCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$_CloseLoadingCopyWithImpl<$Res>
+    extends _$SferaStatesCopyWithImpl<$Res, _$_CloseLoading>
+    implements _$$_CloseLoadingCopyWith<$Res> {
+  __$$_CloseLoadingCopyWithImpl(
+      _$_CloseLoading _value, $Res Function(_$_CloseLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$_CloseLoading implements _CloseLoading {
+  const _$_CloseLoading();
 
   @override
   String toString() {
-    return 'SferaStates.loading()';
+    return 'SferaStates.closeloading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$_CloseLoading);
   }
 
   @override
@@ -123,36 +130,39 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
-    return loading();
+    return closeloading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
-    return loading?.call();
+    return closeloading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (closeloading != null) {
+      return closeloading();
     }
     return orElse();
   }
@@ -160,43 +170,166 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
   }) {
-    return loading(this);
+    return closeloading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
   }) {
-    return loading?.call(this);
+    return closeloading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (closeloading != null) {
+      return closeloading(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loading implements SferaStates {
-  const factory _Loading() = _$_Loading;
+abstract class _CloseLoading implements SferaStates {
+  const factory _CloseLoading() = _$_CloseLoading;
+}
+
+/// @nodoc
+abstract class _$$_OpenLoadingCopyWith<$Res> {
+  factory _$$_OpenLoadingCopyWith(
+          _$_OpenLoading value, $Res Function(_$_OpenLoading) then) =
+      __$$_OpenLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_OpenLoadingCopyWithImpl<$Res>
+    extends _$SferaStatesCopyWithImpl<$Res, _$_OpenLoading>
+    implements _$$_OpenLoadingCopyWith<$Res> {
+  __$$_OpenLoadingCopyWithImpl(
+      _$_OpenLoading _value, $Res Function(_$_OpenLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_OpenLoading implements _OpenLoading {
+  const _$_OpenLoading();
+
+  @override
+  String toString() {
+    return 'SferaStates.openloading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OpenLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function() initial,
+  }) {
+    return openloading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function()? initial,
+  }) {
+    return openloading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (openloading != null) {
+      return openloading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Initial value) initial,
+  }) {
+    return openloading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Initial value)? initial,
+  }) {
+    return openloading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    TResult Function(_Initial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (openloading != null) {
+      return openloading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OpenLoading implements SferaStates {
+  const factory _OpenLoading() = _$_OpenLoading;
 }
 
 /// @nodoc
@@ -261,7 +394,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -272,7 +406,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -283,7 +418,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -298,7 +434,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -309,7 +446,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -320,7 +458,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -379,7 +518,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -390,7 +530,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -401,7 +542,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -416,7 +558,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -427,7 +570,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -438,7 +582,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -492,7 +637,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -503,7 +649,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -514,7 +661,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -529,7 +677,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -540,7 +689,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -551,7 +701,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -575,6 +726,7 @@ mixin _$SferaEvents {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -582,12 +734,14 @@ mixin _$SferaEvents {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -595,18 +749,21 @@ mixin _$SferaEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -715,6 +872,7 @@ class _$_LoginByEmail implements _LoginByEmail {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) {
     return loginByEmail(email, password, isValid);
   }
@@ -725,6 +883,7 @@ class _$_LoginByEmail implements _LoginByEmail {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) {
     return loginByEmail?.call(email, password, isValid);
   }
@@ -734,6 +893,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -747,6 +907,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) {
     return loginByEmail(this);
   }
@@ -756,6 +917,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) {
     return loginByEmail?.call(this);
   }
@@ -765,6 +927,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -855,6 +1018,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) {
     return loginByGoogle(args);
   }
@@ -865,6 +1029,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) {
     return loginByGoogle?.call(args);
   }
@@ -874,6 +1039,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
@@ -887,6 +1053,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) {
     return loginByGoogle(this);
   }
@@ -896,6 +1063,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) {
     return loginByGoogle?.call(this);
   }
@@ -905,6 +1073,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
@@ -921,5 +1090,146 @@ abstract class _LoginByGoogle implements SferaEvents {
   ProviderArgs get args;
   @JsonKey(ignore: true)
   _$$_LoginByGoogleCopyWith<_$_LoginByGoogle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateNameCopyWith<$Res> {
+  factory _$$_UpdateNameCopyWith(
+          _$_UpdateName value, $Res Function(_$_UpdateName) then) =
+      __$$_UpdateNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$_UpdateNameCopyWithImpl<$Res>
+    extends _$SferaEventsCopyWithImpl<$Res, _$_UpdateName>
+    implements _$$_UpdateNameCopyWith<$Res> {
+  __$$_UpdateNameCopyWithImpl(
+      _$_UpdateName _value, $Res Function(_$_UpdateName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$_UpdateName(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateName implements _UpdateName {
+  const _$_UpdateName({required this.name});
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'SferaEvents.updateName(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateName &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateNameCopyWith<_$_UpdateName> get copyWith =>
+      __$$_UpdateNameCopyWithImpl<_$_UpdateName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password, bool isValid)
+        loginByEmail,
+    required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
+  }) {
+    return updateName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, bool isValid)?
+        loginByEmail,
+    TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
+  }) {
+    return updateName?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
+    TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginByEmail value) loginByEmail,
+    required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
+  }) {
+    return updateName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginByEmail value)? loginByEmail,
+    TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
+  }) {
+    return updateName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginByEmail value)? loginByEmail,
+    TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateName implements SferaEvents {
+  const factory _UpdateName({required final String name}) = _$_UpdateName;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$$_UpdateNameCopyWith<_$_UpdateName> get copyWith =>
       throw _privateConstructorUsedError;
 }
