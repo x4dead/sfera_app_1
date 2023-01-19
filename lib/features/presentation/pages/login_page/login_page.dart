@@ -11,6 +11,7 @@ import 'package:sfera_app_1/features/presentation/resources/app_constants.dart';
 import 'package:sfera_app_1/features/presentation/resources/custom_icons.dart';
 import 'package:sfera_app_1/features/presentation/resources/images.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
+import 'package:sfera_app_1/features/presentation/widgets/app_dialog/error_dialog.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_text_field/field_from_class.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
@@ -22,7 +23,6 @@ part 'widgets/buttons/google_button.dart';
 part 'widgets/buttons/gradient_button.dart';
 part 'widgets/buttons/register_now_button.dart';
 part 'widgets/main_layout_widget.dart';
-part 'widgets/auth_error_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                 error: (error) {
                   showDialog(
                     context: context,
-                    builder: (context) =>
-                        AuthErrorWidget(message: error.message),
+                    builder: (context) => ErrorDialog(
+                        content: error.message, title: 'authorisation'),
                   );
                 },
                 openloading: (_) {

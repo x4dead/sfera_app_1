@@ -17,7 +17,7 @@ class LogoutButton extends StatelessWidget {
             await showDialog(
               context: context,
               builder: (context) {
-                return DialogWidget(
+                return AppDialog(
                   title: 'Are you sure you want to logout?',
                   actionTitle: 'Log out',
                   actionColor: Theme.of(context).errorColor,

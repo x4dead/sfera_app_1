@@ -9,7 +9,8 @@ import 'package:sfera_app_1/features/presentation/widgets/app_text_field/field_f
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
 import '../../../../service_locator.dart';
-import '../../widgets/app_dialog/dialog_widget.dart';
+import '../../widgets/app_dialog/app_dialog.dart';
+import '../../widgets/app_dialog/error_dialog.dart';
 
 part 'widgets/app_button/logout_button.dart';
 
@@ -48,7 +49,8 @@ class _HomePageState extends State<HomePage> {
             error: (message) {
               return showDialog(
                 context: context,
-                builder: (context) => AuthErrorWidget(message: message.message),
+                builder: (context) =>
+                    ErrorDialog(content: message.message, title: 'Error'),
               );
             },
             openloading: (value) {
@@ -101,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                               await showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return DialogWidget(
+                                  return AppDialog(
                                     title: 'Are you sure?',
                                     actionTitle: 'Yes',
                                     actionOnTap: () async {

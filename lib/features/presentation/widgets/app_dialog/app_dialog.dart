@@ -1,7 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 
-class DialogWidget extends StatelessWidget {
-  const DialogWidget(
+class AppDialog extends StatelessWidget {
+  const AppDialog(
       {super.key,
       required this.title,
       required this.actionTitle,

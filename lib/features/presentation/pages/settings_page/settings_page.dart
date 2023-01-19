@@ -118,9 +118,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         }
                       },
                     ),
-                    const Text(
+                    Text(
                       'Theme mode',
-                      style: AppTextStyle.wBolds,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          ?.copyWith(fontSize: 15),
                     ),
                   ],
                 ),
