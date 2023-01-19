@@ -18,8 +18,9 @@ class LogoutButton extends StatelessWidget {
               context: context,
               builder: (context) {
                 return DialogWidget(
-                  title: 'Are you sure you want to exit?',
-                  actionTitle: 'Exit',
+                  title: 'Are you sure you want to logout?',
+                  actionTitle: 'Log out',
+                  actionColor: Theme.of(context).errorColor,
                   actionOnTap: () {
                     sl<FirebaseAuth>().signOut();
                     Navigator.pushNamed(context, '/loginPage');

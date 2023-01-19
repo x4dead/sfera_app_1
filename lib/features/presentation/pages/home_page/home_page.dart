@@ -75,12 +75,9 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: [
                         Text(
-                          'Поздравляю вы вошли в свой аккаунт ваш ник: ${user?.displayName}',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyle.wBolds20.copyWith(
-                            color: AppColors.color000000,
-                          ),
-                        ),
+                            'Поздравляю вы вошли в свой аккаунт ваш ник: ${user?.displayName}',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headline6),
                         const SizedBox(height: 20),
                         AppTextField(
                           icon: Icons.person,
@@ -111,11 +108,7 @@ class _HomePageState extends State<HomePage> {
                                       Navigator.pop(context);
                                       _bloc.add(SferaEvents.updateName(
                                           name: nameController.text));
-                                      // await user?.updateDisplayName(
-                                      //   nameController.text,
-                                      // );
                                       nameController.clear();
-                                      // setState(() {});
                                     },
                                   );
                                 },

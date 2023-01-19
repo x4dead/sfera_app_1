@@ -1,17 +1,17 @@
 ﻿import 'package:flutter/material.dart';
-import '../../../../themes/colors/colors.dart';
-import '../../../../themes/text_style/text_style.dart';
 
 class DialogWidget extends StatelessWidget {
   const DialogWidget(
       {super.key,
       required this.title,
       required this.actionTitle,
-      required this.actionOnTap});
+      required this.actionOnTap,
+      this.actionColor});
 
   final String title;
   final String actionTitle;
   final Function() actionOnTap;
+  final Color? actionColor;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -29,7 +29,11 @@ class DialogWidget extends StatelessWidget {
                 MaterialStateProperty.all(Theme.of(context).dividerColor),
           ),
           onPressed: actionOnTap,
-          child: Text(actionTitle, style: Theme.of(context).textTheme.button),
+          child: Text(actionTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .button
+                  ?.copyWith(color: actionColor)),
         ),
       ],
     );
