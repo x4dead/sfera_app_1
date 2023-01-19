@@ -10,35 +10,29 @@ class AuthErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(
-        'authorisation'.tr,
-        maxLines: 2,
-        style: AppTextStyle.wBolds.copyWith(color: AppColors.colorF44336),
-      ),
+      backgroundColor: Theme.of(context).dialogBackgroundColor,
+      title: Text('authorisation'.tr,
+          maxLines: 2,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: Theme.of(context).errorColor)),
       content: SingleChildScrollView(
         child: Text(
           message,
-          style: AppTextStyle.w400s14.copyWith(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? AppColors.colorFFFFFF
-                  : null),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
       actions: [
         TextButton(
           style: ButtonStyle(
-            overlayColor: MaterialStateProperty.all(
-              AppColors.colorFFFFFF.withOpacity(0.2),
-            ),
+            overlayColor:
+                MaterialStateProperty.all(Theme.of(context).dividerColor),
           ),
           onPressed: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/loginPage', (route) => false);
+            Navigator.of(context).pop();
           },
-          child: Text(
-            'try'.tr,
-            style: AppTextStyle.wBolds.copyWith(color: AppColors.colorFFFFFF),
-          ),
+          child: Text('try'.tr, style: Theme.of(context).textTheme.subtitle2),
         )
       ],
     );

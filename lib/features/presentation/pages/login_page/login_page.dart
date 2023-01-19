@@ -49,37 +49,42 @@ class _LoginPageState extends State<LoginPage> {
                 success: (value) {
                   Navigator.pushNamed(context, '/homePage');
                 },
+                error: (error) {
+                  showDialog(
+                    context: context,
+                    builder: (context) =>
+                        AuthErrorWidget(message: error.message),
+                  );
+                },
+                openloading: (_) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                },
+                closeloading: (value) {
+                  return Navigator.of(context).pop();
+                },
               );
             },
             builder: (context, state) {
-              return state.mapOrNull(
-                    initial: (_) => _MainLayoutWidget(
-                      emailController: _emailController,
-                      passwordController: _passwordController,
-                      formKey: formKey,
-                      onTap: () {
-                        final isValid = formKey.currentState!.validate();
-                        _bloc.add(
-                          SferaEvents.loginByEmail(
-                            email: _emailController.text.trim(),
-                            password: _passwordController.text.trim(),
-                            isValid: isValid,
-                          ),
-                        );
-                      },
+              return _MainLayoutWidget(
+                emailController: _emailController,
+                passwordController: _passwordController,
+                formKey: formKey,
+                onTap: () async {
+                  final isValid = formKey.currentState!.validate();
+                  _bloc.add(
+                    SferaEvents.loginByEmail(
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                      isValid: isValid,
                     ),
-                    error: (v) {
-                      return AuthErrorWidget(
-                        message: v.message,
-                      );
-                    },
-                    loading: (_) => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ) ??
-                  AuthErrorWidget(
-                    message: 'unknow'.tr,
                   );
+                },
+              );
             },
           ),
         ),

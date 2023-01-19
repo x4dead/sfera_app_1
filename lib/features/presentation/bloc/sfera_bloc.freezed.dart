@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SferaStates {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -26,7 +27,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -34,7 +36,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -43,7 +46,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -51,7 +55,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -59,7 +64,8 @@ mixin _$SferaStates {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -87,34 +93,35 @@ class _$SferaStatesCopyWithImpl<$Res, $Val extends SferaStates>
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$_CloseLoadingCopyWith<$Res> {
+  factory _$$_CloseLoadingCopyWith(
+          _$_CloseLoading value, $Res Function(_$_CloseLoading) then) =
+      __$$_CloseLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$SferaStatesCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$_CloseLoadingCopyWithImpl<$Res>
+    extends _$SferaStatesCopyWithImpl<$Res, _$_CloseLoading>
+    implements _$$_CloseLoadingCopyWith<$Res> {
+  __$$_CloseLoadingCopyWithImpl(
+      _$_CloseLoading _value, $Res Function(_$_CloseLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$_CloseLoading implements _CloseLoading {
+  const _$_CloseLoading();
 
   @override
   String toString() {
-    return 'SferaStates.loading()';
+    return 'SferaStates.closeloading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$_CloseLoading);
   }
 
   @override
@@ -123,36 +130,39 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
   }) {
-    return loading();
+    return closeloading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
   }) {
-    return loading?.call();
+    return closeloading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (closeloading != null) {
+      return closeloading();
     }
     return orElse();
   }
@@ -160,43 +170,166 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
   }) {
-    return loading(this);
+    return closeloading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
   }) {
-    return loading?.call(this);
+    return closeloading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (closeloading != null) {
+      return closeloading(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loading implements SferaStates {
-  const factory _Loading() = _$_Loading;
+abstract class _CloseLoading implements SferaStates {
+  const factory _CloseLoading() = _$_CloseLoading;
+}
+
+/// @nodoc
+abstract class _$$_OpenLoadingCopyWith<$Res> {
+  factory _$$_OpenLoadingCopyWith(
+          _$_OpenLoading value, $Res Function(_$_OpenLoading) then) =
+      __$$_OpenLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_OpenLoadingCopyWithImpl<$Res>
+    extends _$SferaStatesCopyWithImpl<$Res, _$_OpenLoading>
+    implements _$$_OpenLoadingCopyWith<$Res> {
+  __$$_OpenLoadingCopyWithImpl(
+      _$_OpenLoading _value, $Res Function(_$_OpenLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_OpenLoading implements _OpenLoading {
+  const _$_OpenLoading();
+
+  @override
+  String toString() {
+    return 'SferaStates.openloading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OpenLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function() initial,
+  }) {
+    return openloading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function()? initial,
+  }) {
+    return openloading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (openloading != null) {
+      return openloading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Initial value) initial,
+  }) {
+    return openloading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Initial value)? initial,
+  }) {
+    return openloading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    TResult Function(_Initial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (openloading != null) {
+      return openloading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OpenLoading implements SferaStates {
+  const factory _OpenLoading() = _$_OpenLoading;
 }
 
 /// @nodoc
@@ -261,7 +394,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -272,7 +406,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -283,7 +418,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -298,7 +434,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -309,7 +446,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -320,7 +458,8 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -379,7 +518,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -390,7 +530,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -401,7 +542,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -416,7 +558,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -427,7 +570,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -438,7 +582,8 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,
@@ -492,7 +637,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() closeloading,
+    required TResult Function() openloading,
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function() initial,
@@ -503,7 +649,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? closeloading,
+    TResult? Function()? openloading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function()? initial,
@@ -514,7 +661,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? closeloading,
+    TResult Function()? openloading,
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function()? initial,
@@ -529,7 +677,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_CloseLoading value) closeloading,
+    required TResult Function(_OpenLoading value) openloading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
     required TResult Function(_Initial value) initial,
@@ -540,7 +689,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_CloseLoading value)? closeloading,
+    TResult? Function(_OpenLoading value)? openloading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
     TResult? Function(_Initial value)? initial,
@@ -551,7 +701,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
+    TResult Function(_CloseLoading value)? closeloading,
+    TResult Function(_OpenLoading value)? openloading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     TResult Function(_Initial value)? initial,

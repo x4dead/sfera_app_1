@@ -15,18 +15,33 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
     on<_LoginByEmail>(
       (event, emit) async {
         if (event.isValid) {
-          emit(const SferaStates.loading());
           try {
+            emit(const SferaStates.openloading());
             await sl<FirebaseAuth>().signInWithEmailAndPassword(
               email: event.email,
               password: event.password,
             );
+            emit(const SferaStates.closeloading());
             emit(const SferaStates.success());
           } on FirebaseAuthException catch (e) {
-            if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+            emit(const SferaStates.closeloading());
+            print(e.code);
+            if (e.code == 'user-not-found') {
+              emit(
+                SferaStates.error(
+                  message: 'User not found',
+                ),
+              );
+            } else if (e.code == 'wrong-password') {
               emit(
                 SferaStates.error(
                   message: 'wrong'.tr,
+                ),
+              );
+            } else if (e.code == 'too-many-attempts-try-later') {
+              emit(
+                SferaStates.error(
+                  message: 'Too many attempts Try later'.tr,
                 ),
               );
             } else {
@@ -65,7 +80,8 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
 
 @freezed
 class SferaStates with _$SferaStates {
-  const factory SferaStates.loading() = _Loading;
+  const factory SferaStates.closeloading() = _CloseLoading;
+  const factory SferaStates.openloading() = _OpenLoading;
   const factory SferaStates.error({required String message}) = _Error;
   const factory SferaStates.success() = _Success;
   const factory SferaStates.initial() = _Initial;
