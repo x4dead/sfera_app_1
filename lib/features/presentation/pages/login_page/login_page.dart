@@ -36,6 +36,10 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  ProviderArgs get args => GoogleSignInArgs(
+        redirectUri: AppConstants.redirectUri,
+        clientId: AppConstants.clientId,
+      );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 openloading: (_) {
                   showDialog(
+                    barrierDismissible: false,
                     context: context,
                     builder: (context) => const Center(
                       child: CircularProgressIndicator(),
@@ -74,7 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                 emailController: _emailController,
                 passwordController: _passwordController,
                 formKey: formKey,
-                onTap: () async {
+                onTapGoogleButton: () {
+                  _bloc.add(
+                    SferaEvents.loginByGoogle(args: args),
+                  );
+                },
+                onTapGradientButton: () {
                   final isValid = formKey.currentState!.validate();
                   _bloc.add(
                     SferaEvents.loginByEmail(

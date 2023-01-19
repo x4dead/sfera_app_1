@@ -38,8 +38,9 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       'Поздравляю вы вошли в свой аккаунт ваш ник: ${user?.displayName}',
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.wBolds20
-                          .copyWith(color: AppColors.color000000),
+                      style: AppTextStyle.wBolds20.copyWith(
+                        color: AppColors.color000000,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     AppTextField(

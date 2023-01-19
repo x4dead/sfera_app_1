@@ -4,15 +4,18 @@ class _MainLayoutWidget extends StatefulWidget {
   const _MainLayoutWidget({
     Key? key,
     required this.formKey,
-    required this.onTap,
+    required this.onTapGradientButton,
     required this.emailController,
     required this.passwordController,
+    required this.onTapGoogleButton,
   }) : super(key: key);
 
   final GlobalKey<FormState> formKey;
-  final Function() onTap;
+  final Function() onTapGradientButton;
+  final Function() onTapGoogleButton;
   final TextEditingController emailController;
   final TextEditingController passwordController;
+
   @override
   State<_MainLayoutWidget> createState() => _MainLayoutWidgetState();
 }
@@ -72,13 +75,6 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                       text: 'password'.tr,
                       validator: (password) =>
                           FieldFormClass.validatorPassword(password),
-                      //   RegExp(r"^[a-z0-9a-zA-Z]+");
-                      //   if (password != null && password.length < 6) {
-                      //     return 'the'.tr;
-                      //   } else {
-                      //     return null;
-                      //   }
-                      // },
                       suffix: IconButton(
                         splashRadius: 15,
                         onPressed: () {
@@ -110,7 +106,7 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                 ),
                 const SizedBox(height: 10),
                 _GradientButton(
-                  onTap: widget.onTap,
+                  onTap: widget.onTapGradientButton,
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -121,7 +117,8 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                _GoogleSignInButton(theme: _theme),
+                _GoogleSignInButton(
+                    theme: _theme, onTapGoogleButton: widget.onTapGoogleButton),
                 const SizedBox(height: 20),
                 const _RegisterNowButton(),
               ],

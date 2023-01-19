@@ -67,8 +67,9 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
           final result = await DesktopWebviewAuth.signIn(event.args);
           final credential =
               GoogleAuthProvider.credential(accessToken: result?.accessToken);
-          // emit(const SferaStates.loading());
+          emit(const SferaStates.openloading());
           await sl<FirebaseAuth>().signInWithCredential(credential);
+          emit(const SferaStates.closeloading());
           emit(const SferaStates.success());
         } catch (e) {
           print(e);
