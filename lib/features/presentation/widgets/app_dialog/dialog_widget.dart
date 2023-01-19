@@ -20,15 +20,16 @@ class DialogWidget extends StatelessWidget {
           const EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 5),
       titlePadding: const EdgeInsets.all(20),
       title: Text(title, textAlign: TextAlign.center),
-      titleTextStyle: AppTextStyle.w400s14
-          .copyWith(color: AppColors.color000000, fontSize: 16),
+      titleTextStyle: Theme.of(context).textTheme.subtitle1,
       actionsAlignment: MainAxisAlignment.center,
       actions: [
-        InkWell(
-          splashColor: AppColors.colorTransparent,
-          overlayColor: MaterialStateProperty.all(AppColors.colorTransparent),
-          onTap: actionOnTap,
-          child: Text(actionTitle, style: AppTextStyle.wBolds),
+        TextButton(
+          style: ButtonStyle(
+            overlayColor:
+                MaterialStateProperty.all(Theme.of(context).dividerColor),
+          ),
+          onPressed: actionOnTap,
+          child: Text(actionTitle, style: Theme.of(context).textTheme.button),
         ),
       ],
     );
