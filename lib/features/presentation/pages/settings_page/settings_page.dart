@@ -101,15 +101,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       activeTrackColor: AppColors.color06325f,
                       activeColor: AppColors.color06325f.withOpacity(0.8),
                       splashRadius: 20,
-                      activeThumbImage: const NetworkImage(
-                        'https://cdn-icons-png.flaticon.com/512/230/230994.png',
-                      ),
+                      activeThumbImage: Image.asset(AppImages.dark).image,
                       inactiveThumbColor: AppColors.color5aa2e7,
                       inactiveTrackColor: AppColors.color427BB1,
-                      inactiveThumbImage: const NetworkImage(
-                          'https://cdn-icons-png.flaticon.com/512/552/552448.png',
-                          scale: 5),
-                      // inactiveThumbImage: Icon(Icons.),
+                      inactiveThumbImage: Image.asset(AppImages.light).image,
                       onChanged: (value) {
                         if (value = false) {
                           isDark = !isDark;
@@ -123,22 +118,6 @@ class _SettingsPageState extends State<SettingsPage> {
                         }
                       },
                     ),
-                    // FlutterCustomSwitch(
-                    //   isSmallToggle: true,
-                    //   value: isDark,
-                    //   onChanged: (value) {
-                    //     if (value = false) {
-                    //       isDark = !isDark;
-                    //       value = true;
-                    //       sl<ThemeCubit>().changeTheme();
-                    //     } else {
-                    //       isDark = !isDark;
-                    //       value = false;
-                    //       sl<ThemeCubit>().changeTheme();
-                    //       setState(() {});
-                    //     }
-                    //   },
-                    // ),
                     const Text(
                       'Theme mode',
                       style: AppTextStyle.wBolds,
