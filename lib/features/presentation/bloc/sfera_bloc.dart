@@ -12,6 +12,7 @@ part 'sfera_bloc.freezed.dart';
 
 class SferaBloc extends Bloc<SferaEvents, SferaStates> {
   SferaBloc() : super(const SferaStates.initial()) {
+    ///Login by email
     on<_LoginByEmail>(
       (event, emit) async {
         if (event.isValid) {
@@ -56,6 +57,7 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
       },
     );
 
+    ///Login by Google
     on<_LoginByGoogle>(
       (event, emit) async {
         final googleSignInArgs = GoogleSignInArgs(
@@ -71,11 +73,25 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
           await sl<FirebaseAuth>().signInWithCredential(credential);
           emit(const SferaStates.closeloading());
           emit(const SferaStates.success());
-        } catch (e) {
-          print(e);
+        } on FirebaseAuthException catch (e) {
+          print(e.code);
+          emit(SferaStates.error(message: e.code));
         }
       },
     );
+
+    ///Update name
+    on<_UpdateName>((event, emit) async {
+      final user = sl<FirebaseAuth>().currentUser;
+      try {
+        emit(const SferaStates.openloading());
+        await user?.updateDisplayName(event.name);
+        emit(const SferaStates.closeloading());
+        emit(const SferaStates.success());
+      } catch (e) {
+        emit(const SferaStates.error(message: 'oops, try again'));
+      }
+    });
   }
 }
 
@@ -96,4 +112,5 @@ class SferaEvents with _$SferaEvents {
       required bool isValid}) = _LoginByEmail;
   const factory SferaEvents.loginByGoogle({required ProviderArgs args}) =
       _LoginByGoogle;
+  const factory SferaEvents.updateName({required String name}) = _UpdateName;
 }

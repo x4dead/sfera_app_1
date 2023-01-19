@@ -726,6 +726,7 @@ mixin _$SferaEvents {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -733,12 +734,14 @@ mixin _$SferaEvents {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -746,18 +749,21 @@ mixin _$SferaEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -866,6 +872,7 @@ class _$_LoginByEmail implements _LoginByEmail {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) {
     return loginByEmail(email, password, isValid);
   }
@@ -876,6 +883,7 @@ class _$_LoginByEmail implements _LoginByEmail {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) {
     return loginByEmail?.call(email, password, isValid);
   }
@@ -885,6 +893,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -898,6 +907,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) {
     return loginByEmail(this);
   }
@@ -907,6 +917,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) {
     return loginByEmail?.call(this);
   }
@@ -916,6 +927,7 @@ class _$_LoginByEmail implements _LoginByEmail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) {
     if (loginByEmail != null) {
@@ -1006,6 +1018,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
     required TResult Function(String email, String password, bool isValid)
         loginByEmail,
     required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
   }) {
     return loginByGoogle(args);
   }
@@ -1016,6 +1029,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
     TResult? Function(String email, String password, bool isValid)?
         loginByEmail,
     TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
   }) {
     return loginByGoogle?.call(args);
   }
@@ -1025,6 +1039,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password, bool isValid)? loginByEmail,
     TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
@@ -1038,6 +1053,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginByEmail value) loginByEmail,
     required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
   }) {
     return loginByGoogle(this);
   }
@@ -1047,6 +1063,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginByEmail value)? loginByEmail,
     TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
   }) {
     return loginByGoogle?.call(this);
   }
@@ -1056,6 +1073,7 @@ class _$_LoginByGoogle implements _LoginByGoogle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginByEmail value)? loginByEmail,
     TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
     required TResult orElse(),
   }) {
     if (loginByGoogle != null) {
@@ -1072,5 +1090,146 @@ abstract class _LoginByGoogle implements SferaEvents {
   ProviderArgs get args;
   @JsonKey(ignore: true)
   _$$_LoginByGoogleCopyWith<_$_LoginByGoogle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateNameCopyWith<$Res> {
+  factory _$$_UpdateNameCopyWith(
+          _$_UpdateName value, $Res Function(_$_UpdateName) then) =
+      __$$_UpdateNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$_UpdateNameCopyWithImpl<$Res>
+    extends _$SferaEventsCopyWithImpl<$Res, _$_UpdateName>
+    implements _$$_UpdateNameCopyWith<$Res> {
+  __$$_UpdateNameCopyWithImpl(
+      _$_UpdateName _value, $Res Function(_$_UpdateName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$_UpdateName(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateName implements _UpdateName {
+  const _$_UpdateName({required this.name});
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'SferaEvents.updateName(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateName &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateNameCopyWith<_$_UpdateName> get copyWith =>
+      __$$_UpdateNameCopyWithImpl<_$_UpdateName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password, bool isValid)
+        loginByEmail,
+    required TResult Function(ProviderArgs args) loginByGoogle,
+    required TResult Function(String name) updateName,
+  }) {
+    return updateName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, bool isValid)?
+        loginByEmail,
+    TResult? Function(ProviderArgs args)? loginByGoogle,
+    TResult? Function(String name)? updateName,
+  }) {
+    return updateName?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, bool isValid)? loginByEmail,
+    TResult Function(ProviderArgs args)? loginByGoogle,
+    TResult Function(String name)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginByEmail value) loginByEmail,
+    required TResult Function(_LoginByGoogle value) loginByGoogle,
+    required TResult Function(_UpdateName value) updateName,
+  }) {
+    return updateName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginByEmail value)? loginByEmail,
+    TResult? Function(_LoginByGoogle value)? loginByGoogle,
+    TResult? Function(_UpdateName value)? updateName,
+  }) {
+    return updateName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginByEmail value)? loginByEmail,
+    TResult Function(_LoginByGoogle value)? loginByGoogle,
+    TResult Function(_UpdateName value)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateName implements SferaEvents {
+  const factory _UpdateName({required final String name}) = _$_UpdateName;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$$_UpdateNameCopyWith<_$_UpdateName> get copyWith =>
       throw _privateConstructorUsedError;
 }
