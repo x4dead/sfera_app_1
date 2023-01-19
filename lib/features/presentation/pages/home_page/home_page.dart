@@ -1,15 +1,14 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_text_field/app_text_field.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_text_field/field_from_class.dart';
 import 'package:sfera_app_1/themes/colors/colors.dart';
 import 'package:sfera_app_1/themes/text_style/text_style.dart';
-
 import '../../../../service_locator.dart';
+import '../../widgets/app_dialog/dialog_widget.dart';
+
+part 'widgets/app_button/logout_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -95,72 +94,5 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     nameController.dispose();
     super.dispose();
-  }
-}
-
-class LogoutButton extends StatelessWidget {
-  const LogoutButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: IconButton(
-          icon: const Icon(Icons.logout),
-          onPressed: () async {
-            await showDialog(
-              context: context,
-              builder: (context) {
-                return DialogWidget(
-                  title: 'Are you sure you want to exit?',
-                  actionTitle: 'Exit',
-                  actionOnTap: () {
-                    sl<FirebaseAuth>().signOut();
-                    Navigator.pushNamed(context, '/loginPage');
-                  },
-                );
-              },
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class DialogWidget extends StatelessWidget {
-  const DialogWidget(
-      {super.key,
-      required this.title,
-      required this.actionTitle,
-      required this.actionOnTap});
-
-  final String title;
-  final String actionTitle;
-  final Function() actionOnTap;
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      actionsPadding:
-          const EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 5),
-      titlePadding: const EdgeInsets.all(20),
-      title: Text(title, textAlign: TextAlign.center),
-      titleTextStyle: AppTextStyle.w400s14
-          .copyWith(color: AppColors.color000000, fontSize: 16),
-      actionsAlignment: MainAxisAlignment.center,
-      actions: [
-        InkWell(
-          splashColor: AppColors.colorTransparent,
-          overlayColor: MaterialStateProperty.all(AppColors.colorTransparent),
-          onTap: actionOnTap,
-          child: Text(actionTitle, style: AppTextStyle.wBolds),
-        ),
-      ],
-    );
   }
 }
