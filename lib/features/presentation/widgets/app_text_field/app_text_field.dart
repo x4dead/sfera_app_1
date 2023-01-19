@@ -34,19 +34,15 @@ class AppTextField extends StatelessWidget {
       maxLength: maxLength,
       controller: controller,
       validator: validator,
-      style: AppTextStyle.w400s14.copyWith(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.color000000.withOpacity(0.85)
-              : null),
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium
+          ?.copyWith(color: AppColors.color000000.withOpacity(0.85)),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
         counterText: '',
         hintText: '$text:',
-        hintStyle: TextStyle(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.color000000.withOpacity(0.7)
-              : null,
-        ),
+        hintStyle: TextStyle(color: AppColors.color000000.withOpacity(0.7)),
         filled: true,
         fillColor: AppColors.colorFFFFFF,
         suffixIcon: suffix,
@@ -60,13 +56,11 @@ class AppTextField extends StatelessWidget {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide:
-              const BorderSide(color: AppColors.colorF44336, width: 0.7),
+          borderSide: BorderSide(color: Theme.of(context).errorColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide:
-              const BorderSide(color: AppColors.colorF44336, width: 0.7),
+          borderSide: BorderSide(color: Theme.of(context).errorColor),
         ),
       ),
     );

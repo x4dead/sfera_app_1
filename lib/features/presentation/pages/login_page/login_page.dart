@@ -6,6 +6,7 @@ import 'package:desktop_webview_auth/desktop_webview_auth.dart';
 import 'package:desktop_webview_auth/google.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sfera_app_1/features/presentation/bloc/theme_cubit.dart';
 import 'package:sfera_app_1/features/presentation/resources/app_constants.dart';
 import 'package:sfera_app_1/features/presentation/resources/custom_icons.dart';

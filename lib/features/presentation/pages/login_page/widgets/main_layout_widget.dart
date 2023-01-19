@@ -48,12 +48,18 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                 const SizedBox(height: 10),
                 Text(
                   'hello'.tr.toUpperCase(),
-                  style: AppTextStyle.oswald
-                      .copyWith(fontSize: 52, fontWeight: FontWeight.w600),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 52,
+                      fontFamily: GoogleFonts.oswald().fontFamily),
                 ),
-                Text('welcome'.tr,
-                    style: AppTextStyle.w400s20
-                        .copyWith(fontWeight: FontWeight.normal)),
+                Text(
+                  'welcome'.tr,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      ?.copyWith(fontSize: 20),
+                ),
                 const SizedBox(height: 25),
                 AppTextField(
                     inputFormatters: FieldFormClass.regExpEmail,
@@ -95,13 +101,13 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                   },
                 ),
                 const SizedBox(height: 10),
-                InkWell(
-                  borderRadius: BorderRadius.circular(5),
-                  onTap: () {},
+                TextButton(
+                  onPressed: () {},
                   child: Text(
                     'forgot'.tr,
-                    style: AppTextStyle.wBolds
-                        .copyWith(color: AppColors.color5aa2e7),
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.color5aa2e7),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -111,16 +117,16 @@ class _MainLayoutWidgetState extends State<_MainLayoutWidget> {
                 const SizedBox(height: 10),
                 Text(
                   'or'.tr.toUpperCase(),
-                  style: AppTextStyle.oswald.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: GoogleFonts.oswald().fontFamily),
                 ),
                 const SizedBox(height: 10),
                 _GoogleSignInButton(
                     theme: _theme, onTapGoogleButton: widget.onTapGoogleButton),
                 const SizedBox(height: 20),
                 const _RegisterNowButton(),
+                const SizedBox(height: 20),
               ],
             ),
           ),

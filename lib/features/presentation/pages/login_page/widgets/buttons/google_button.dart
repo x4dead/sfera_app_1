@@ -48,7 +48,8 @@ class _GoogleSignInButton extends StatelessWidget {
             ),
             TextSpan(
               text: 'google'.tr,
-              style: AppTextStyle.wBolds.copyWith(color: AppColors.colorFFFFFF),
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold, color: AppColors.colorFFFFFF),
             ),
           ],
         ),

@@ -34,7 +34,10 @@ class _GradientButton extends StatelessWidget {
         child: Center(
           child: Text(
             'sign'.tr,
-            style: AppTextStyle.wBolds20,
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.colorFFFFFF),
           ),
         ),
       ),
