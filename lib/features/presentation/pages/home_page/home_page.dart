@@ -1,6 +1,7 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:sfera_app_1/features/presentation/bloc/sfera_bloc.dart';
 import 'package:sfera_app_1/features/presentation/pages/login_page/login_page.dart';
 import 'package:sfera_app_1/features/presentation/widgets/app_button/app_button.dart';
@@ -86,15 +87,15 @@ class _HomePageState extends State<HomePage> {
                           maxLength: 16,
                           inputFormatters: FieldFormClass.regExpName,
                           controller: nameController,
-                          text: 'Name',
+                          text: 'name'.tr,
                           validator: (name) =>
                               FieldFormClass.validatorName(name),
                         ),
                         const SizedBox(height: 20),
                         AppButton(
                           primary: AppColors.color06325f,
-                          child: const Text(
-                            'Change name',
+                          child: Text(
+                            'change_name'.tr,
                             style: AppTextStyle.wBolds20,
                           ),
                           onPressed: () async {
@@ -104,8 +105,8 @@ class _HomePageState extends State<HomePage> {
                                 context: context,
                                 builder: (context) {
                                   return AppDialog(
-                                    title: 'Are you sure?',
-                                    actionTitle: 'Yes',
+                                    title: 'are_u_sure'.tr,
+                                    actionTitle: 'yes'.tr,
                                     actionOnTap: () async {
                                       Navigator.pop(context);
                                       _bloc.add(SferaEvents.updateName(

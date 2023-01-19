@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   showDialog(
                     context: context,
                     builder: (context) => ErrorDialog(
-                        content: error.message, title: 'authorisation'),
+                        content: error.message, title: 'auth_error'),
                   );
                 },
                 openloading: (_) {
