@@ -22,17 +22,17 @@ class FieldFormClass {
       );
 
   static RegExp regExpPassword =
-      RegExp(r'^[A-Za-z0-9!@#\$&*~а-яА-Я]+', unicode: true);
+      RegExp(r'^[A-Za-z0-9!@#\$&*~]+', unicode: true);
   static RegExp regExpEmail = RegExp(r'^[a-z0-9@._-]+');
   static RegExp regExpName = RegExp(r'^[A-Za-z]+', unicode: true);
 
   static String? validatorName(String? name) {
     if (name!.length < 3) {
       //если длинна имени меньше 3 символов выводиим ошибку
-      return 'Name must contain at least 3 characters';
+      return 'name_3_characters'.tr;
     } else if (!name.contains(RegExp(r'[A-Z]'))) {
       //если пароль не содержит хотя бы одну заглавную буквку выводим ошибку
-      return 'Password must contain at least \none uppercase letter';
+      return 'name_uppercase'.tr;
     } else {
       return null;
     }
@@ -49,17 +49,17 @@ class FieldFormClass {
   static String? validatorPassword(String? password) {
     if (password == null || password.length < 6) {
       //если длинна пароля меньше 6 символов выводиим ошибку
-      return 'Password must contain at least 6 characters';
-    } else if (!password.contains(RegExp(r'[A-ZА-Я]'))) {
-      //если пароль не содержит хотя бы одну заглавную буквку выводим ошибку
-      return 'Password must contain at least \none uppercase letter';
-    } else if (!password.contains(RegExp(r'[a-zа-я]'))) {
-      //если пароль не содержит хотя бы одну заглавную буквку выводим ошибку
-      return 'Password must contain at least \none lowercase letter';
+      return 'password_6_characters'.tr;
+    } else if (!password.contains(RegExp(r'[A-Z]'))) {
+      //если пароль не содержит хотя бы одну заглавную букву выводим ошибку
+      return 'password_uppercase'.tr;
+    } else if (!password.contains(RegExp(r'[a-z]'))) {
+      //если пароль не содержит хотя бы одну заглавную букву выводим ошибку
+      return 'password_lowercase'.tr;
     } else if (!password.contains(RegExp(r'[0-9]'))) {
-      return 'Password must contain at least \none number';
+      return 'password_number'.tr;
     } else if (!password.contains(RegExp(r'[_!@#\$&*~]'))) {
-      return 'Password must contain at least \nsymbol _!@#\\\$&*';
+      return 'password_symbol'.tr;
     } else {
       return null;
     }
@@ -68,14 +68,14 @@ class FieldFormClass {
   static String? validatorOldNewPassword(
       String passwordOld, String passwordNew) {
     if (passwordNew == passwordOld) {
-      return "The password is the same as the old one";
+      return "password_is_same".tr;
     }
     return null;
   }
 
   static String? validatorNewPasswords(String password1, String password2) {
     if (password1 != password2) {
-      return "Passwords do not match. Try again.";
+      return "password_match".tr;
     }
     return null;
   }

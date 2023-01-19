@@ -29,20 +29,16 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
             print(e.code);
             if (e.code == 'user-not-found') {
               emit(
-                SferaStates.error(
-                  message: 'User not found',
-                ),
+                SferaStates.error(message: 'not_found'.tr),
               );
             } else if (e.code == 'wrong-password') {
               emit(
-                SferaStates.error(
-                  message: 'wrong'.tr,
-                ),
+                SferaStates.error(message: 'wrong'.tr),
               );
             } else if (e.code == 'too-many-attempts-try-later') {
               emit(
                 SferaStates.error(
-                  message: 'Too many attempts Try later'.tr,
+                  message: 'many_attempts'.tr,
                 ),
               );
             } else {
@@ -89,7 +85,7 @@ class SferaBloc extends Bloc<SferaEvents, SferaStates> {
         emit(const SferaStates.closeloading());
         emit(const SferaStates.success());
       } catch (e) {
-        emit(const SferaStates.error(message: 'oops, try again'));
+        emit(SferaStates.error(message: 'unknow'.tr));
       }
     });
   }
